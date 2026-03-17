@@ -32,7 +32,7 @@ export default function Platform() {
           <div>
             <motion.p
               variants={fadeUp}
-              className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
             >
               Plataforma ODR
             </motion.p>
@@ -64,13 +64,13 @@ export default function Platform() {
           {/* Image */}
           <motion.div
             variants={fadeUp}
-            className="relative h-[500px] rounded-2xl overflow-hidden bg-[#FAFAFA] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+            className="relative h-[500px] [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
           >
             <Image
               src="/apoyo-3.png"
               alt="Plataforma ODR REDEK"
               fill
-              className="object-cover mix-blend-multiply grayscale"
+              className="object-cover mix-blend-multiply grayscale contrast-125"
             />
           </motion.div>
         </motion.div>

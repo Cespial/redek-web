@@ -73,14 +73,14 @@ export default function Hero() {
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" as const }}
-        className="w-full max-w-3xl mx-auto relative mt-16 flex-1 min-h-[500px] [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)]"
+        className="w-full max-w-3xl mx-auto relative mt-16 flex-1 min-h-[500px] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]"
       >
         <Image
           src="/hero-halftone.png"
           alt="REDEK — Inteligencia artificial y criterio humano"
           fill
           priority
-          className="object-cover object-top mix-blend-multiply grayscale"
+          className="object-cover object-top mix-blend-multiply grayscale contrast-125"
         />
       </motion.div>
     </section>

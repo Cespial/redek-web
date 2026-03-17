@@ -45,13 +45,13 @@ export default function AIFeatures() {
             {/* Image */}
             <motion.div
               variants={fadeUp}
-              className="relative h-96 rounded-2xl overflow-hidden bg-white order-2 md:order-1"
+              className="relative h-96 order-2 md:order-1"
             >
               <Image
                 src="/apoyo-2.png"
                 alt="Visión artificial y análisis legal"
                 fill
-                className="object-cover object-right mix-blend-multiply grayscale"
+                className="object-cover object-right mix-blend-multiply grayscale contrast-125"
               />
             </motion.div>
 
@@ -59,7 +59,7 @@ export default function AIFeatures() {
             <div className="order-1 md:order-2">
               <motion.p
                 variants={fadeUp}
-                className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
               >
                 Inteligencia Artificial
               </motion.p>
@@ -88,7 +88,7 @@ export default function AIFeatures() {
                 variants={fadeUp}
                 className="border-t border-gray-200 pt-6"
               >
-                <span className="text-xs font-mono text-gray-300 mb-3 block">
+                <span className="text-sm font-mono text-gray-400 tracking-widest mb-3 block">
                   0{i + 1}
                 </span>
                 <h3 className="text-base font-semibold text-[#111] mb-2">

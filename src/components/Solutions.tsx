@@ -44,7 +44,7 @@ export default function Solutions() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
           >
             Soluciones
           </motion.p>
@@ -68,9 +68,9 @@ export default function Solutions() {
               <motion.div
                 key={s.number}
                 variants={fadeUp}
-                className="border border-gray-100 rounded-2xl p-8 hover:border-gray-300 transition-colors group"
+                className="border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] cursor-pointer hover:border-gray-300 group"
               >
-                <span className="text-xs font-mono text-gray-300">
+                <span className="text-sm font-mono text-gray-400 tracking-widest">
                   {s.number}
                 </span>
                 <h3 className="text-xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
@@ -99,7 +99,7 @@ export default function Solutions() {
             className="mt-16 grid md:grid-cols-2 gap-8 items-center"
           >
             <div>
-              <span className="text-xs font-mono text-gray-300">04</span>
+              <span className="text-sm font-mono text-gray-400 tracking-widest">04</span>
               <h3 className="text-2xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
                 Consultorías Especializadas
               </h3>
@@ -109,12 +109,12 @@ export default function Solutions() {
                 organización desde la estrategia hasta la implementación.
               </p>
             </div>
-            <div className="relative h-72 rounded-2xl overflow-hidden bg-[#FAFAFA] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
+            <div className="relative h-72 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
               <Image
                 src="/apoyo-1.png"
                 alt="Tecnología de resolución de disputas"
                 fill
-                className="object-cover mix-blend-multiply grayscale"
+                className="object-cover mix-blend-multiply grayscale contrast-125"
               />
             </div>
           </motion.div>

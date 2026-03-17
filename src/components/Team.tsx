@@ -29,7 +29,7 @@ export default function Team() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
           >
             Nuestro Equipo
           </motion.p>
@@ -54,8 +54,8 @@ export default function Team() {
                 variants={fadeUp}
                 className="group"
               >
-                <div className="w-full aspect-square rounded-2xl bg-white border border-gray-100 flex items-center justify-center mb-4 group-hover:border-gray-300 transition-colors">
-                  <span className="text-2xl font-light tracking-tight text-gray-300 group-hover:text-[#111] transition-colors">
+                <div className="w-full aspect-square bg-zinc-50 border border-zinc-100 rounded-lg flex items-center justify-center mb-4 group-hover:border-zinc-300 transition-all duration-300 group-hover:-translate-y-1">
+                  <span className="text-2xl font-light tracking-tight text-zinc-400 group-hover:text-[#111] transition-colors">
                     {m.initials}
                   </span>
                 </div>

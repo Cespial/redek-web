@@ -22,7 +22,7 @@ export default function Contact() {
           <div>
             <motion.p
               variants={fadeUp}
-              className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
             >
               Contacto
             </motion.p>

@@ -51,7 +51,7 @@ export default function About() {
           <div>
             <motion.p
               variants={fadeUp}
-              className="text-xs font-medium tracking-wide uppercase text-gray-400 mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
             >
               Conoce a REDEK
             </motion.p>
@@ -80,7 +80,7 @@ export default function About() {
                 variants={fadeUp}
                 className="flex gap-5"
               >
-                <span className="text-xs font-mono text-gray-300 mt-1 shrink-0">
+                <span className="text-sm font-mono text-gray-400 tracking-widest mt-1 shrink-0">
                   {p.number}
                 </span>
                 <div>
