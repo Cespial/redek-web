@@ -22,14 +22,14 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100"
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo — blue icon natural + text */}
+        {/* Logo */}
         <a href="#" className="flex items-center gap-2.5">
           <Image
             src="/redek-logo.png"
             alt="REDEK"
-            width={32}
-            height={32}
-            className="h-8 w-8 object-contain"
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
           />
           <span className="text-lg font-semibold tracking-tight text-[#0F172A]">
             REDEK
@@ -42,9 +42,10 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-gray-500 hover:text-[#0F172A] transition-colors font-medium"
+              className="relative text-sm text-gray-500 hover:text-[#0F172A] transition-colors font-medium group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-full h-px bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </a>
           ))}
           <a

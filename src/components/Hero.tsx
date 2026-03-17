@@ -39,11 +39,8 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-[75%_center] mix-blend-multiply grayscale contrast-125 opacity-80"
         />
-        {/* Left fade */}
         <div className="absolute inset-y-0 left-0 w-[50%] bg-gradient-to-r from-white via-white/80 to-transparent" />
-        {/* Bottom fade */}
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-        {/* Top fade */}
         <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/80 to-transparent" />
       </motion.div>
 
@@ -73,7 +70,7 @@ export default function Hero() {
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-lg md:text-xl text-gray-500 max-w-md text-left"
+            className="mt-6 text-lg md:text-xl text-gray-500 max-w-lg text-left leading-relaxed"
           >
             Transformamos la complejidad jurídica en resoluciones simples.
             Tecnología inteligente que maneja los datos para que tu equipo tome
@@ -83,13 +80,32 @@ export default function Hero() {
           <motion.a
             variants={fadeUp}
             href="#contacto"
-            className="mt-10 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
+            className="group mt-10 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
           >
             Agendar Demo Privada
-            <span className="text-blue-200">&#8594;</span>
+            <span className="text-blue-200 transition-transform group-hover:translate-x-1">
+              &#8594;
+            </span>
           </motion.a>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-medium">
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" as const }}
+          className="w-px h-6 bg-gradient-to-b from-gray-300 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

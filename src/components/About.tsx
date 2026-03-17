@@ -47,8 +47,8 @@ export default function About() {
           }}
           className="grid md:grid-cols-2 gap-16 items-start"
         >
-          {/* Left */}
-          <div>
+          {/* Left — sticky */}
+          <div className="md:sticky md:top-28">
             <motion.p
               variants={fadeUp}
               className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
@@ -73,14 +73,14 @@ export default function About() {
           </div>
 
           {/* Right — Pillars */}
-          <div className="grid gap-8">
+          <div className="grid gap-6">
             {pillars.map((p) => (
               <motion.div
                 key={p.number}
                 variants={fadeUp}
-                className="flex gap-5"
+                className="flex gap-5 bg-white/60 rounded-xl px-6 py-5 border border-blue-100/40"
               >
-                <span className="text-sm font-mono text-blue-300 tracking-widest mt-1 shrink-0">
+                <span className="text-sm font-mono text-blue-300 tracking-widest mt-0.5 shrink-0">
                   {p.number}
                 </span>
                 <div>

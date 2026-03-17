@@ -47,16 +47,15 @@ export default function Team() {
             visión de negocio.
           </motion.p>
 
-          {/* Compact horizontal cards */}
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {team.map((m) => (
               <motion.div
                 key={m.name}
                 variants={fadeUp}
                 className="flex items-center gap-4 bg-white border border-blue-100/60 rounded-xl px-5 py-4 hover:border-blue-200 transition-all duration-300 hover:-translate-y-0.5 group"
               >
-                <div className="w-11 h-11 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
-                  <span className="text-sm font-medium text-blue-600">
+                <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
+                  <span className="text-xs font-semibold text-blue-600">
                     {m.initials}
                   </span>
                 </div>
@@ -68,6 +67,25 @@ export default function Team() {
                 </div>
               </motion.div>
             ))}
+
+            {/* Join CTA card */}
+            <motion.a
+              href="#contacto"
+              variants={fadeUp}
+              className="flex items-center gap-4 border border-dashed border-blue-200 rounded-xl px-5 py-4 hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300 group"
+            >
+              <div className="w-10 h-10 rounded-full border border-blue-200 flex items-center justify-center shrink-0 group-hover:border-blue-400 transition-colors">
+                <span className="text-lg text-blue-400 group-hover:text-blue-600 transition-colors leading-none">
+                  +
+                </span>
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold text-blue-600">
+                  Únete al equipo
+                </h3>
+                <p className="text-xs text-gray-400">Estamos creciendo</p>
+              </div>
+            </motion.a>
           </div>
         </motion.div>
       </div>

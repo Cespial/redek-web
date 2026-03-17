@@ -23,10 +23,14 @@ export default function Stats() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0"
         >
-          {stats.map((s) => (
-            <motion.div key={s.label} variants={fadeUp} className="text-center">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              variants={fadeUp}
+              className={`text-center ${i > 0 ? "lg:border-l lg:border-gray-100" : ""}`}
+            >
               <p className="text-4xl md:text-5xl font-semibold tracking-tighter text-blue-700">
                 {s.value}
               </p>

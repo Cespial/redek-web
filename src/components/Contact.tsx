@@ -39,7 +39,6 @@ export default function Contact() {
               Agenda una demo privada y descubre cómo REDEK puede transformar la
               gestión de disputas en tu organización.
             </motion.p>
-            {/* Contact info */}
             <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-3">
               <a
                 href="mailto:info@redek.co"
@@ -109,10 +108,12 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="mt-4 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all self-start shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
+              className="group mt-4 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all self-start shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
             >
               Enviar Mensaje
-              <span className="text-blue-200">&#8594;</span>
+              <span className="text-blue-200 transition-transform group-hover:translate-x-1">
+                &#8594;
+              </span>
             </button>
           </motion.form>
         </motion.div>
