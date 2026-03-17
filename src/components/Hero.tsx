@@ -23,19 +23,37 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="min-h-screen relative overflow-hidden bg-white">
-      <div className="max-w-6xl mx-auto px-6 pt-32 pb-16 min-h-screen grid md:grid-cols-2 gap-8 items-center">
-        {/* Left — Text */}
+    <section className="relative min-h-screen overflow-hidden bg-white">
+      {/* Background halftone image — absolute, covers right half */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" as const }}
+        className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent_10%,black_40%)] md:[mask-image:linear-gradient(to_right,transparent_25%,black_50%)]"
+      >
+        <Image
+          src="/hero-halftone.png"
+          alt="REDEK — Inteligencia artificial y criterio humano"
+          fill
+          priority
+          className="object-cover object-right mix-blend-multiply grayscale contrast-125"
+        />
+        {/* Bottom fade */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
+      </motion.div>
+
+      {/* Text content — sits on top, left-aligned */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-24 min-h-screen flex flex-col justify-center">
         <motion.div
           variants={container}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-start z-10"
+          className="flex flex-col items-start max-w-xl"
         >
           {/* Badge */}
           <motion.div
             variants={fadeUp}
-            className="rounded-full border border-gray-200 px-4 py-1.5 text-xs text-gray-600 mb-8 font-medium tracking-wide uppercase"
+            className="rounded-full border border-gray-200 px-4 py-1.5 text-xs text-gray-600 mb-8 font-medium tracking-wide uppercase backdrop-blur-sm bg-white/60"
           >
             La nueva era de resolución legal
           </motion.div>
@@ -43,7 +61,7 @@ export default function Hero() {
           {/* Titular */}
           <motion.h1
             variants={fadeUp}
-            className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-medium tracking-tighter text-left leading-[1.05] text-black"
+            className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-tighter text-left leading-[1.05] text-black"
           >
             Precisión
             <br />
@@ -70,22 +88,6 @@ export default function Hero() {
           >
             Agendar Demo Privada
           </motion.a>
-        </motion.div>
-
-        {/* Right — Halftone Image */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" as const }}
-          className="relative h-[70vh] md:h-[85vh] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]"
-        >
-          <Image
-            src="/hero-halftone.png"
-            alt="REDEK — Inteligencia artificial y criterio humano"
-            fill
-            priority
-            className="object-cover object-right mix-blend-multiply grayscale contrast-125"
-          />
         </motion.div>
       </div>
     </section>
