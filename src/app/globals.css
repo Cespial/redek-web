@@ -4,6 +4,7 @@
   --color-background: #ffffff;
   --color-foreground: #0F172A;
   --font-sans: var(--font-inter);
+  --animate-marquee: marquee 30s linear infinite;
 }
 
 html {
@@ -19,4 +20,13 @@ body {
 ::selection {
   background: #1D4ED8;
   color: #fff;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
