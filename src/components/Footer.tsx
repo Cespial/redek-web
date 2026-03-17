@@ -34,8 +34,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-blue-200/60 max-w-xs leading-relaxed">
-              Pionera en soluciones jurídicas digitales. Precisión algorítmica,
-              criterio humano.
+              Tecnología de resolución de disputas para organizaciones que
+              exigen eficiencia sin sacrificar criterio.
             </p>
             {/* LinkedIn */}
             <a

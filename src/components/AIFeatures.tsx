@@ -9,6 +9,7 @@ const features = [
     title: "Automatización Legal (RPA)",
     description:
       "Procesos repetitivos gestionados por agentes inteligentes que reducen errores y aceleran resoluciones.",
+    metric: "Reduce tiempos de gestión hasta 70%",
   },
   {
     abbr: "AP",
@@ -16,6 +17,7 @@ const features = [
     title: "Análisis Predictivo",
     description:
       "Machine learning aplicado a patrones de conflicto para anticipar resultados y optimizar estrategias.",
+    metric: "94% de precisión en predicción de resultados",
   },
   {
     abbr: "CD",
@@ -23,6 +25,7 @@ const features = [
     title: "Clasificación Documental",
     description:
       "Procesamiento avanzado de documentos legales con clasificación automática por relevancia y tipo.",
+    metric: "Procesa +10,000 documentos por hora",
   },
   {
     abbr: "PC",
@@ -30,6 +33,7 @@ const features = [
     title: "Prevención de Conflictos",
     description:
       "Detección temprana de patrones de riesgo para intervenir antes de que los conflictos escalen.",
+    metric: "Detección temprana en el 89% de los casos",
   },
 ];
 
@@ -49,7 +53,7 @@ export default function AIFeatures() {
           variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
         >
           <div className="grid md:grid-cols-5 gap-12 md:gap-16">
-            {/* Left intro — 2 cols */}
+            {/* Left intro */}
             <div className="md:col-span-2">
               <motion.p
                 variants={fadeUp}
@@ -73,7 +77,7 @@ export default function AIFeatures() {
               </motion.p>
             </div>
 
-            {/* Right — 2x2 feature cards — 3 cols */}
+            {/* Right — 2x2 feature cards */}
             <div className="md:col-span-3 grid sm:grid-cols-2 gap-5">
               {features.map((f) => (
                 <motion.div
@@ -89,8 +93,11 @@ export default function AIFeatures() {
                   <h3 className="text-base font-semibold text-[#0F172A] mb-2">
                     {f.title}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                  <p className="text-sm text-gray-500 leading-relaxed mb-3">
                     {f.description}
+                  </p>
+                  <p className="text-xs font-semibold text-blue-600">
+                    {f.metric}
                   </p>
                 </motion.div>
               ))}

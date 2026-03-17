@@ -8,6 +8,7 @@ const services = [
     title: "Desarrollo a la Medida",
     description:
       "Co-diseñamos, desarrollamos e implementamos plataformas ODR personalizadas que se integran con tu ecosistema tecnológico existente.",
+    result: "Control total sobre la experiencia y los datos",
     features: ["Co-diseño", "Desarrollo", "Implementación"],
   },
   {
@@ -15,6 +16,7 @@ const services = [
     title: "Soluciones Manejadas",
     description:
       "Accede a nuestra plataforma mediante suscripción o bajo demanda. Nosotros gestionamos la infraestructura mientras tú resuelves disputas.",
+    result: "Operativo en semanas, no en meses",
     features: ["Suscripción", "Bajo demanda", "Soporte 24/7"],
   },
   {
@@ -22,14 +24,16 @@ const services = [
     title: "Soluciones Licenciadas",
     description:
       "Licencia completa de nuestra tecnología para gestión interna con total control y autonomía operativa.",
-    features: ["Control total", "Autonomía", "Personalización"],
+    result: "Independencia tecnológica con respaldo experto",
+    features: ["Licenciamiento", "Autonomía", "Personalización"],
   },
   {
     number: "04",
     title: "Consultorías Especializadas",
     description:
       "Proyectos de transformación digital, fintech, digitalización de la justicia y capacitación en LegalTech.",
-    features: ["Estrategia", "Capacitación", "Implementación"],
+    result: "De la estrategia a la implementación medible",
+    features: ["Estrategia", "Capacitación", "Acompañamiento"],
   },
 ];
 
@@ -77,7 +81,7 @@ export default function Solutions() {
             necesita operar. Sin rigidez, sin sobre-ingeniería.
           </motion.p>
 
-          {/* Service Cards — 2x2 grid */}
+          {/* Service Cards — 2x2 */}
           <div className="grid sm:grid-cols-2 gap-6 mt-16">
             {services.map((s) => (
               <motion.div
@@ -91,8 +95,11 @@ export default function Solutions() {
                 <h3 className="text-xl font-semibold text-[#0F172A] mt-4 mb-3 tracking-tight">
                   {s.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-6">
+                <p className="text-sm text-gray-500 leading-relaxed mb-3">
                   {s.description}
+                </p>
+                <p className="text-xs font-semibold text-blue-600 mb-5">
+                  &#8594; {s.result}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {s.features.map((f) => (
@@ -108,7 +115,7 @@ export default function Solutions() {
             ))}
           </div>
 
-          {/* Platform capabilities — visual break */}
+          {/* Platform ODR block */}
           <motion.div
             variants={fadeUp}
             className="mt-20 bg-[#0C1B3A] rounded-2xl p-10 md:p-14"
@@ -125,6 +132,15 @@ export default function Solutions() {
                   Resultados rápidos y efectivos. Costos reducidos. Acceso desde
                   cualquier lugar del mundo.
                 </p>
+                <a
+                  href="#contacto"
+                  className="group inline-flex items-center gap-2 mt-6 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  Explorar la plataforma
+                  <span className="transition-transform group-hover:translate-x-1">
+                    &#8594;
+                  </span>
+                </a>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {capabilities.map((c) => (

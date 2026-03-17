@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "Ministerio de Justicia",
-  "Cámara de Comercio",
-  "Superintendencia de Sociedades",
-  "Corte de Arbitraje",
-  "Banco de Desarrollo",
-  "Fiscalía General",
-  "Defensoría del Pueblo",
-  "Procuraduría Nacional",
+  { name: "Ministerio de Justicia", style: "uppercase tracking-widest text-base font-bold" },
+  { name: "Cámara de Comercio", style: "text-lg font-semibold tracking-tight" },
+  { name: "Superintendencia de Sociedades", style: "uppercase tracking-wider text-sm font-bold" },
+  { name: "Corte de Arbitraje", style: "text-lg font-light tracking-wide italic" },
+  { name: "Banco de Desarrollo", style: "uppercase tracking-[0.25em] text-sm font-semibold" },
+  { name: "Fiscalía General", style: "text-xl font-bold tracking-tighter" },
+  { name: "Defensoría del Pueblo", style: "text-base font-medium tracking-wide" },
+  { name: "Procuraduría Nacional", style: "uppercase tracking-widest text-sm font-bold" },
 ];
 
 const fadeUp = {
@@ -35,20 +35,19 @@ export default function Clients() {
 
       {/* Infinite marquee */}
       <div className="relative">
-        {/* Left fade */}
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        {/* Right fade */}
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <div className="flex animate-marquee">
-          {/* Duplicate the list for seamless loop */}
-          {[...clients, ...clients].map((name, i) => (
+          {[...clients, ...clients].map((c, i) => (
             <div
-              key={`${name}-${i}`}
+              key={`${c.name}-${i}`}
               className="flex-shrink-0 px-10 flex items-center"
             >
-              <span className="text-lg font-semibold tracking-tight text-gray-300 whitespace-nowrap select-none">
-                {name}
+              <span
+                className={`text-gray-300 whitespace-nowrap select-none ${c.style}`}
+              >
+                {c.name}
               </span>
             </div>
           ))}

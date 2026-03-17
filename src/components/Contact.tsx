@@ -39,7 +39,21 @@ export default function Contact() {
               Agenda una demo privada y descubre cómo REDEK puede transformar la
               gestión de disputas en tu organización.
             </motion.p>
-            <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-3">
+
+            {/* Impact stat */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-10 bg-blue-50/50 rounded-xl p-6 border border-blue-100/50"
+            >
+              <p className="text-3xl font-semibold tracking-tighter text-blue-700">
+                14 días
+              </p>
+              <p className="text-sm text-gray-500 mt-1">
+                Resolución promedio vs. 18 meses en tribunales tradicionales
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3">
               <a
                 href="mailto:info@redek.co"
                 className="text-sm text-gray-500 hover:text-blue-600 transition-colors"
@@ -76,12 +90,12 @@ export default function Contact() {
             </div>
             <div>
               <label className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2 block">
-                Email
+                Email corporativo
               </label>
               <input
                 type="email"
                 required
-                placeholder="tu@email.com"
+                placeholder="tu@empresa.com"
                 className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
             </div>
@@ -97,12 +111,12 @@ export default function Contact() {
             </div>
             <div>
               <label className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2 block">
-                Mensaje
+                ¿Cuál es tu mayor desafío?
               </label>
               <textarea
                 rows={4}
                 required
-                placeholder="Cuéntanos sobre tu caso..."
+                placeholder="Ej: Necesitamos reducir los tiempos de resolución de disputas comerciales..."
                 className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent resize-none"
               />
             </div>
