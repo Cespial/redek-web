@@ -24,25 +24,28 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-white">
-      {/* Background halftone image — absolute, covers right half */}
+      {/* Halftone image — right 55%, contained, not zoomed */}
       <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" as const }}
-        className="absolute inset-0 [mask-image:linear-gradient(to_right,transparent_10%,black_40%)] md:[mask-image:linear-gradient(to_right,transparent_25%,black_50%)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" as const }}
+        className="absolute top-0 right-0 bottom-0 w-full md:w-[55%] pointer-events-none"
       >
         <Image
           src="/hero-halftone.png"
           alt="REDEK — Inteligencia artificial y criterio humano"
           fill
           priority
-          className="object-cover object-right mix-blend-multiply grayscale contrast-125"
+          sizes="(max-width: 768px) 100vw, 55vw"
+          className="object-contain object-right mix-blend-multiply grayscale contrast-125"
         />
         {/* Bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+        {/* Left fade — blend into text area */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
       </motion.div>
 
-      {/* Text content — sits on top, left-aligned */}
+      {/* Text content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-24 min-h-screen flex flex-col justify-center">
         <motion.div
           variants={container}
@@ -53,7 +56,7 @@ export default function Hero() {
           {/* Badge */}
           <motion.div
             variants={fadeUp}
-            className="rounded-full border border-gray-200 px-4 py-1.5 text-xs text-gray-600 mb-8 font-medium tracking-wide uppercase backdrop-blur-sm bg-white/60"
+            className="rounded-full border border-gray-200 px-4 py-1.5 text-xs text-gray-600 mb-8 font-medium tracking-wide uppercase"
           >
             La nueva era de resolución legal
           </motion.div>
