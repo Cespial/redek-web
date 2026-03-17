@@ -24,6 +24,22 @@ const services = [
       "Licencia completa de nuestra tecnología para gestión interna con total control y autonomía operativa.",
     features: ["Control total", "Autonomía", "Personalización"],
   },
+  {
+    number: "04",
+    title: "Consultorías Especializadas",
+    description:
+      "Proyectos de transformación digital, fintech, digitalización de la justicia y capacitación en LegalTech.",
+    features: ["Estrategia", "Capacitación", "Implementación"],
+  },
+];
+
+const capabilities = [
+  "Negociación directa entre partes",
+  "Mediación digital automatizada",
+  "Arbitraje eficiente",
+  "Interfaz intuitiva",
+  "Seguridad y confidencialidad",
+  "Accesibilidad global",
 ];
 
 const fadeUp = {
@@ -51,7 +67,7 @@ export default function Solutions() {
             variants={fadeUp}
             className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-3xl"
           >
-            Tres modelos. Una misión: resolver.
+            Cuatro modelos. Una misión: resolver.
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -61,8 +77,8 @@ export default function Solutions() {
             necesita operar. Sin rigidez, sin sobre-ingeniería.
           </motion.p>
 
-          {/* Service Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
+          {/* Service Cards — 2x2 grid */}
+          <div className="grid sm:grid-cols-2 gap-6 mt-16">
             {services.map((s) => (
               <motion.div
                 key={s.number}
@@ -92,20 +108,33 @@ export default function Solutions() {
             ))}
           </div>
 
-          {/* Consultorías */}
+          {/* Platform capabilities — visual break */}
           <motion.div
             variants={fadeUp}
-            className="mt-16 border-t border-gray-100 pt-12 max-w-2xl"
+            className="mt-20 bg-[#0C1B3A] rounded-2xl p-10 md:p-14"
           >
-            <span className="text-sm font-mono text-blue-300 tracking-widest">04</span>
-            <h3 className="text-2xl font-semibold text-[#0F172A] mt-4 mb-3 tracking-tight">
-              Consultorías Especializadas
-            </h3>
-            <p className="text-gray-500 leading-relaxed">
-              Proyectos de transformación digital, fintech, digitalización de
-              la justicia y capacitación en LegalTech. Acompañamos tu
-              organización desde la estrategia hasta la implementación.
-            </p>
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+              <div>
+                <p className="text-xs font-semibold tracking-widest uppercase text-blue-400 mb-4">
+                  Plataforma ODR
+                </p>
+                <h3 className="text-3xl md:text-4xl font-medium tracking-tighter leading-[1.1] text-white">
+                  Resolución de disputas sin fronteras.
+                </h3>
+                <p className="mt-4 text-blue-200/60 leading-relaxed">
+                  Resultados rápidos y efectivos. Costos reducidos. Acceso desde
+                  cualquier lugar del mundo.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {capabilities.map((c) => (
+                  <div key={c} className="flex items-center gap-2.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                    <span className="text-sm text-blue-100/80">{c}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </div>

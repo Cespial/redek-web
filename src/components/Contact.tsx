@@ -39,6 +39,23 @@ export default function Contact() {
               Agenda una demo privada y descubre cómo REDEK puede transformar la
               gestión de disputas en tu organización.
             </motion.p>
+            {/* Contact info */}
+            <motion.div variants={fadeUp} className="mt-10 flex flex-col gap-3">
+              <a
+                href="mailto:info@redek.co"
+                className="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+              >
+                info@redek.co
+              </a>
+              <a
+                href="https://redek.co"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+              >
+                redek.co
+              </a>
+            </motion.div>
           </div>
 
           {/* Form */}
@@ -53,6 +70,7 @@ export default function Contact() {
               </label>
               <input
                 type="text"
+                required
                 placeholder="Tu nombre completo"
                 className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
@@ -63,6 +81,7 @@ export default function Contact() {
               </label>
               <input
                 type="email"
+                required
                 placeholder="tu@email.com"
                 className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
@@ -83,15 +102,17 @@ export default function Contact() {
               </label>
               <textarea
                 rows={4}
+                required
                 placeholder="Cuéntanos sobre tu caso..."
                 className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent resize-none"
               />
             </div>
             <button
               type="submit"
-              className="mt-4 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all self-start shadow-2xl shadow-blue-700/25"
+              className="mt-4 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all self-start shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
             >
               Enviar Mensaje
+              <span className="text-blue-200">&#8594;</span>
             </button>
           </motion.form>
         </motion.div>

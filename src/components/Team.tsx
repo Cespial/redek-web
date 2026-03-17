@@ -9,7 +9,7 @@ const team = [
   { name: "James Daly", role: "Business Development Advisor", initials: "JD" },
   { name: "Oscar Echeverry", role: "Commercial & Processes Manager", initials: "OE" },
   { name: "Miguel Andrade", role: "Operations Manager", initials: "MA" },
-  { name: "Jacobo Gómez", role: "Head of Research & Development", initials: "JG" },
+  { name: "Jacobo Gómez", role: "Head of R&D", initials: "JG" },
 ];
 
 const fadeUp = {
@@ -25,7 +25,7 @@ export default function Team() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
         >
           <motion.p
             variants={fadeUp}
@@ -47,20 +47,25 @@ export default function Team() {
             visión de negocio.
           </motion.p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+          {/* Compact horizontal cards */}
+          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {team.map((m) => (
               <motion.div
                 key={m.name}
                 variants={fadeUp}
-                className="group"
+                className="flex items-center gap-4 bg-white border border-blue-100/60 rounded-xl px-5 py-4 hover:border-blue-200 transition-all duration-300 hover:-translate-y-0.5 group"
               >
-                <div className="w-full aspect-square bg-white border border-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:border-blue-300 transition-all duration-300 group-hover:-translate-y-1">
-                  <span className="text-2xl font-light tracking-tight text-blue-300 group-hover:text-blue-600 transition-colors">
+                <div className="w-11 h-11 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
+                  <span className="text-sm font-medium text-blue-600">
                     {m.initials}
                   </span>
                 </div>
-                <h3 className="text-sm font-semibold text-[#0F172A]">{m.name}</h3>
-                <p className="text-xs text-gray-400 mt-0.5">{m.role}</p>
+                <div className="min-w-0">
+                  <h3 className="text-sm font-semibold text-[#0F172A] truncate">
+                    {m.name}
+                  </h3>
+                  <p className="text-xs text-gray-400 truncate">{m.role}</p>
+                </div>
               </motion.div>
             ))}
           </div>
