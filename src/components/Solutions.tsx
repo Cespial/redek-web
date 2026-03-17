@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const services = [
   {
@@ -93,30 +92,20 @@ export default function Solutions() {
             ))}
           </div>
 
-          {/* Consultorías + Image */}
+          {/* Consultorías — text only */}
           <motion.div
             variants={fadeUp}
-            className="mt-16 grid md:grid-cols-2 gap-8 items-center"
+            className="mt-16 border-t border-gray-100 pt-12 max-w-2xl"
           >
-            <div>
-              <span className="text-sm font-mono text-gray-400 tracking-widest">04</span>
-              <h3 className="text-2xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
-                Consultorías Especializadas
-              </h3>
-              <p className="text-gray-500 leading-relaxed">
-                Proyectos de transformación digital, fintech, digitalización de
-                la justicia y capacitación en LegalTech. Acompañamos tu
-                organización desde la estrategia hasta la implementación.
-              </p>
-            </div>
-            <div className="relative h-72 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
-              <Image
-                src="/apoyo-1.png"
-                alt="Tecnología de resolución de disputas"
-                fill
-                className="object-cover mix-blend-multiply grayscale contrast-125"
-              />
-            </div>
+            <span className="text-sm font-mono text-gray-400 tracking-widest">04</span>
+            <h3 className="text-2xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
+              Consultorías Especializadas
+            </h3>
+            <p className="text-gray-500 leading-relaxed">
+              Proyectos de transformación digital, fintech, digitalización de
+              la justicia y capacitación en LegalTech. Acompañamos tu
+              organización desde la estrategia hasta la implementación.
+            </p>
           </motion.div>
         </motion.div>
       </div>

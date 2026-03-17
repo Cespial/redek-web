@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const features = [
   {
@@ -41,44 +40,26 @@ export default function AIFeatures() {
           viewport={{ once: true, margin: "-100px" }}
           variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
         >
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Image */}
-            <motion.div
-              variants={fadeUp}
-              className="relative h-96 order-2 md:order-1"
-            >
-              <Image
-                src="/apoyo-2.png"
-                alt="Visión artificial y análisis legal"
-                fill
-                className="object-cover object-right mix-blend-multiply grayscale contrast-125"
-              />
-            </motion.div>
-
-            {/* Content */}
-            <div className="order-1 md:order-2">
-              <motion.p
-                variants={fadeUp}
-                className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
-              >
-                Inteligencia Artificial
-              </motion.p>
-              <motion.h2
-                variants={fadeUp}
-                className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111]"
-              >
-                IA que amplifica el criterio jurídico.
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="mt-6 text-gray-500 text-lg leading-relaxed"
-              >
-                No reemplazamos abogados. Les damos superpoderes. Nuestra IA
-                procesa la complejidad para que los humanos tomen mejores
-                decisiones.
-              </motion.p>
-            </div>
-          </div>
+          <motion.p
+            variants={fadeUp}
+            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+          >
+            Inteligencia Artificial
+          </motion.p>
+          <motion.h2
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111] max-w-3xl"
+          >
+            IA que amplifica el criterio jurídico.
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-gray-500 text-lg leading-relaxed max-w-2xl"
+          >
+            No reemplazamos abogados. Les damos superpoderes. Nuestra IA
+            procesa la complejidad para que los humanos tomen mejores
+            decisiones.
+          </motion.p>
 
           {/* Feature Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
