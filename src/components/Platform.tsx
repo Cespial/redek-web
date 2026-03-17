@@ -29,13 +29,13 @@ export default function Platform() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
           >
             Plataforma ODR
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111]"
+            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A]"
           >
             Resolución de disputas sin fronteras.
           </motion.h2>
@@ -51,7 +51,7 @@ export default function Platform() {
           <motion.div variants={fadeUp} className="mt-10 grid grid-cols-2 gap-3">
             {capabilities.map((c) => (
               <div key={c} className="flex items-center gap-2.5">
-                <div className="w-1 h-1 rounded-full bg-[#111] shrink-0" />
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
                 <span className="text-sm text-gray-600">{c}</span>
               </div>
             ))}

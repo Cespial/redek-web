@@ -43,13 +43,13 @@ export default function Solutions() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
           >
             Soluciones
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111] max-w-3xl"
+            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-3xl"
           >
             Tres modelos. Una misión: resolver.
           </motion.h2>
@@ -67,12 +67,12 @@ export default function Solutions() {
               <motion.div
                 key={s.number}
                 variants={fadeUp}
-                className="border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] cursor-pointer hover:border-gray-300 group"
+                className="border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(29,78,216,0.08)] cursor-pointer hover:border-blue-200 group"
               >
-                <span className="text-sm font-mono text-gray-400 tracking-widest">
+                <span className="text-sm font-mono text-blue-300 tracking-widest">
                   {s.number}
                 </span>
-                <h3 className="text-xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
+                <h3 className="text-xl font-semibold text-[#0F172A] mt-4 mb-3 tracking-tight">
                   {s.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed mb-6">
@@ -82,7 +82,7 @@ export default function Solutions() {
                   {s.features.map((f) => (
                     <span
                       key={f}
-                      className="text-xs text-gray-400 border border-gray-100 rounded-full px-3 py-1 group-hover:border-gray-200 transition-colors"
+                      className="text-xs text-gray-400 border border-gray-100 rounded-full px-3 py-1 group-hover:border-blue-100 group-hover:text-blue-500 transition-colors"
                     >
                       {f}
                     </span>
@@ -92,13 +92,13 @@ export default function Solutions() {
             ))}
           </div>
 
-          {/* Consultorías — text only */}
+          {/* Consultorías */}
           <motion.div
             variants={fadeUp}
             className="mt-16 border-t border-gray-100 pt-12 max-w-2xl"
           >
-            <span className="text-sm font-mono text-gray-400 tracking-widest">04</span>
-            <h3 className="text-2xl font-semibold text-[#111] mt-4 mb-3 tracking-tight">
+            <span className="text-sm font-mono text-blue-300 tracking-widest">04</span>
+            <h3 className="text-2xl font-semibold text-[#0F172A] mt-4 mb-3 tracking-tight">
               Consultorías Especializadas
             </h3>
             <p className="text-gray-500 leading-relaxed">

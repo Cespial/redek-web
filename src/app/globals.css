@@ -2,7 +2,7 @@
 
 @theme inline {
   --color-background: #ffffff;
-  --color-foreground: #111111;
+  --color-foreground: #0F172A;
   --font-sans: var(--font-inter);
 }
 
@@ -17,6 +17,6 @@ body {
 }
 
 ::selection {
-  background: #111;
+  background: #1D4ED8;
   color: #fff;
 }

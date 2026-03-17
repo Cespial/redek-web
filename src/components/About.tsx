@@ -36,7 +36,7 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-32 bg-[#FAFAFA]">
+    <section id="nosotros" className="py-32 bg-blue-50/40">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -51,13 +51,13 @@ export default function About() {
           <div>
             <motion.p
               variants={fadeUp}
-              className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
             >
               Conoce a REDEK
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111]"
+              className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A]"
             >
               Pionera en soluciones jurídicas digitales.
             </motion.h2>
@@ -80,11 +80,11 @@ export default function About() {
                 variants={fadeUp}
                 className="flex gap-5"
               >
-                <span className="text-sm font-mono text-gray-400 tracking-widest mt-1 shrink-0">
+                <span className="text-sm font-mono text-blue-300 tracking-widest mt-1 shrink-0">
                   {p.number}
                 </span>
                 <div>
-                  <h3 className="text-base font-semibold text-[#111] mb-1">
+                  <h3 className="text-base font-semibold text-[#0F172A] mb-1">
                     {p.title}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed">

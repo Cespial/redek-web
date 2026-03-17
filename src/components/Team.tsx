@@ -19,7 +19,7 @@ const fadeUp = {
 
 export default function Team() {
   return (
-    <section id="equipo" className="py-32 bg-[#FAFAFA]">
+    <section id="equipo" className="py-32 bg-blue-50/40">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -29,13 +29,13 @@ export default function Team() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
           >
             Nuestro Equipo
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111] max-w-2xl"
+            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-2xl"
           >
             Las personas detrás de la precisión.
           </motion.h2>
@@ -47,19 +47,19 @@ export default function Team() {
             visión de negocio.
           </motion.p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             {team.map((m) => (
               <motion.div
                 key={m.name}
                 variants={fadeUp}
                 className="group"
               >
-                <div className="w-full aspect-square bg-zinc-50 border border-zinc-100 rounded-lg flex items-center justify-center mb-4 group-hover:border-zinc-300 transition-all duration-300 group-hover:-translate-y-1">
-                  <span className="text-2xl font-light tracking-tight text-zinc-400 group-hover:text-[#111] transition-colors">
+                <div className="w-full aspect-square bg-white border border-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:border-blue-300 transition-all duration-300 group-hover:-translate-y-1">
+                  <span className="text-2xl font-light tracking-tight text-blue-300 group-hover:text-blue-600 transition-colors">
                     {m.initials}
                   </span>
                 </div>
-                <h3 className="text-sm font-semibold text-[#111]">{m.name}</h3>
+                <h3 className="text-sm font-semibold text-[#0F172A]">{m.name}</h3>
                 <p className="text-xs text-gray-400 mt-0.5">{m.role}</p>
               </motion.div>
             ))}

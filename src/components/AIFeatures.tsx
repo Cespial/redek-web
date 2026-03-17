@@ -32,7 +32,7 @@ const fadeUp = {
 
 export default function AIFeatures() {
   return (
-    <section className="py-32 bg-[#FAFAFA]">
+    <section className="py-32 bg-blue-50/40">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -42,13 +42,13 @@ export default function AIFeatures() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
           >
             Inteligencia Artificial
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111] max-w-3xl"
+            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-3xl"
           >
             IA que amplifica el criterio jurídico.
           </motion.h2>
@@ -67,12 +67,12 @@ export default function AIFeatures() {
               <motion.div
                 key={f.title}
                 variants={fadeUp}
-                className="border-t border-gray-200 pt-6"
+                className="border-t border-blue-200/60 pt-6"
               >
-                <span className="text-sm font-mono text-gray-400 tracking-widest mb-3 block">
+                <span className="text-sm font-mono text-blue-300 tracking-widest mb-3 block">
                   0{i + 1}
                 </span>
-                <h3 className="text-base font-semibold text-[#111] mb-2">
+                <h3 className="text-base font-semibold text-[#0F172A] mb-2">
                   {f.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">

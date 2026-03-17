@@ -22,13 +22,13 @@ export default function Contact() {
           <div>
             <motion.p
               variants={fadeUp}
-              className="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
             >
               Contacto
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#111]"
+              className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A]"
             >
               Hablemos de lo que necesitas resolver.
             </motion.h2>
@@ -54,7 +54,7 @@ export default function Contact() {
               <input
                 type="text"
                 placeholder="Tu nombre completo"
-                className="w-full border-b border-gray-200 py-3 text-[#111] placeholder:text-gray-300 focus:outline-none focus:border-[#111] transition-colors bg-transparent"
+                className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
             </div>
             <div>
@@ -64,7 +64,7 @@ export default function Contact() {
               <input
                 type="email"
                 placeholder="tu@email.com"
-                className="w-full border-b border-gray-200 py-3 text-[#111] placeholder:text-gray-300 focus:outline-none focus:border-[#111] transition-colors bg-transparent"
+                className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
             </div>
             <div>
@@ -74,7 +74,7 @@ export default function Contact() {
               <input
                 type="tel"
                 placeholder="+57 300 000 0000"
-                className="w-full border-b border-gray-200 py-3 text-[#111] placeholder:text-gray-300 focus:outline-none focus:border-[#111] transition-colors bg-transparent"
+                className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent"
               />
             </div>
             <div>
@@ -84,12 +84,12 @@ export default function Contact() {
               <textarea
                 rows={4}
                 placeholder="Cuéntanos sobre tu caso..."
-                className="w-full border-b border-gray-200 py-3 text-[#111] placeholder:text-gray-300 focus:outline-none focus:border-[#111] transition-colors bg-transparent resize-none"
+                className="w-full border-b border-gray-200 py-3 text-[#0F172A] placeholder:text-gray-300 focus:outline-none focus:border-blue-600 transition-colors bg-transparent resize-none"
               />
             </div>
             <button
               type="submit"
-              className="mt-4 bg-[#111] text-white px-8 py-4 rounded-full text-sm font-medium hover:scale-105 transition-transform self-start shadow-2xl shadow-black/20"
+              className="mt-4 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all self-start shadow-2xl shadow-blue-700/25"
             >
               Enviar Mensaje
             </button>
