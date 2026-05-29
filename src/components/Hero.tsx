@@ -1,109 +1,112 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import NodeNetwork from "./NodeNetwork";
 
 const container = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
 const fadeUp = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 18, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.7, ease: "easeOut" as const },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white">
-      {/* Background halftone */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.03 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" as const }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/hero-halftone.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[75%_center] mix-blend-multiply grayscale contrast-125 opacity-80"
-        />
-        <div className="absolute inset-y-0 left-0 w-[50%] bg-gradient-to-r from-white via-white/80 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/80 to-transparent" />
-      </motion.div>
+    <section className="relative min-h-screen overflow-hidden bg-bg">
+      {/* Subtle grid backdrop */}
+      <div className="absolute inset-0 bg-grid bg-grid-fade" />
 
-      {/* Text content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-36 pb-24 min-h-screen flex flex-col justify-center">
+      {/* Living node network — right half */}
+      <div className="absolute inset-0">
+        <div className="absolute right-0 top-0 h-full w-full md:w-[62%]">
+          <NodeNetwork />
+        </div>
+        {/* fade the network into the text on the left */}
+        <div className="absolute inset-y-0 left-0 hidden md:block w-[46%] bg-gradient-to-r from-bg via-bg/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-32 pb-24">
         <motion.div
           variants={container}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-start max-w-xl"
+          className="max-w-2xl"
         >
-          <motion.div
-            variants={fadeUp}
-            className="rounded-full border border-blue-200 px-4 py-1.5 text-xs text-blue-700 mb-8 font-medium tracking-wide uppercase bg-white/70 backdrop-blur-sm"
-          >
-            La nueva era de resolución legal
+          <motion.div variants={fadeUp} className="mb-7 flex items-center gap-3">
+            <span className="h-px w-8 bg-brand" />
+            <span className="eyebrow">La nueva era de la resolución legal</span>
           </motion.div>
 
           <motion.h1
             variants={fadeUp}
-            className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-tighter text-left leading-[1.05] text-[#0F172A]"
+            className="h-display text-[2.75rem] leading-[1.02] sm:text-6xl lg:text-7xl"
           >
-            Precisión Algorítmica.
+            Precisión algorítmica.
             <br />
-            Criterio Humano.
+            <span className="text-brand">Criterio humano.</span>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-lg md:text-xl text-gray-500 max-w-lg text-left leading-relaxed"
+            className="mt-7 max-w-lg text-lg leading-relaxed text-muted md:text-xl"
           >
             Transformamos la complejidad jurídica en resoluciones simples.
-            Tecnología inteligente que maneja los datos para que tu equipo tome
-            las decisiones que importan.
+            Tecnología que ordena los datos para que tu equipo decida lo que
+            importa.
           </motion.p>
 
-          <motion.a
+          <motion.div
             variants={fadeUp}
-            href="#contacto"
-            className="group mt-10 bg-blue-700 text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-blue-800 hover:scale-105 transition-all shadow-2xl shadow-blue-700/25 inline-flex items-center gap-2"
+            className="mt-10 flex flex-wrap items-center gap-3"
           >
-            Agendar Demo Privada
-            <span className="text-blue-200 transition-transform group-hover:translate-x-1">
-              &#8594;
+            <a href="#contacto" className="btn-primary group">
+              Agendar demo privada
+              <span className="transition-transform group-hover:translate-x-0.5">
+                &#8594;
+              </span>
+            </a>
+            <a href="#soluciones" className="btn-secondary">
+              Ver soluciones
+            </a>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="mt-12 flex items-center gap-6 text-sm text-muted"
+          >
+            <span className="flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              ODR en operación en 12 países
             </span>
-          </motion.a>
+            <span className="hidden h-4 w-px bg-line sm:block" />
+            <span className="hidden sm:inline">98% de resolución efectiva</span>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        transition={{ delay: 1.6, duration: 1 }}
+        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-widest text-gray-400 font-medium">
+        <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted/70">
           Scroll
         </span>
-        <motion.div
+        <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" as const }}
-          className="w-px h-6 bg-gradient-to-b from-gray-300 to-transparent"
+          className="h-6 w-px bg-gradient-to-b from-muted/50 to-transparent"
         />
       </motion.div>
     </section>

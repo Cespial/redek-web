@@ -48,29 +48,39 @@ const fadeUp = {
 
 export default function TrustBar() {
   return (
-    <section className="py-16 bg-blue-50/40 border-y border-blue-100/40">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-bg-soft border-y border-line py-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="eyebrow mb-8 text-center"
+        >
+          Confianza y cumplimiento
+        </motion.p>
+
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4"
         >
           {badges.map((b) => (
             <motion.div
               key={b.title}
               variants={fadeUp}
-              className="flex items-start gap-3"
+              className="flex items-start gap-3 bg-bg p-6 transition-colors hover:bg-bg-soft"
             >
-              <div className="w-10 h-10 rounded-lg bg-white border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-bg text-brand">
                 {b.icon}
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-[#0F172A]">
+                <h4 className="font-display text-sm font-semibold text-text">
                   {b.title}
                 </h4>
-                <p className="text-xs text-gray-400 mt-0.5">{b.description}</p>
+                <p className="mt-0.5 text-xs text-muted">{b.description}</p>
               </div>
             </motion.div>
           ))}

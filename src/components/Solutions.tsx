@@ -53,7 +53,7 @@ const fadeUp = {
 
 export default function Solutions() {
   return (
-    <section id="soluciones" className="py-32 bg-white">
+    <section id="soluciones" className="divide-section py-28 md:py-32 bg-bg">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -61,21 +61,19 @@ export default function Solutions() {
           viewport={{ once: true, margin: "-100px" }}
           variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
-          >
+          <motion.p variants={fadeUp} className="eyebrow mb-4">
             Soluciones
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-3xl"
+            className="h-display text-4xl md:text-5xl max-w-3xl"
           >
-            Cuatro modelos. Una misión: resolver.
+            Cuatro modelos. Una misión:{" "}
+            <span className="text-brand">resolver</span>.
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-gray-500 text-lg max-w-2xl"
+            className="mt-6 text-muted text-lg max-w-2xl"
           >
             Adaptamos nuestra tecnología a la forma en que tu organización
             necesita operar. Sin rigidez, sin sobre-ingeniería.
@@ -87,25 +85,25 @@ export default function Solutions() {
               <motion.div
                 key={s.number}
                 variants={fadeUp}
-                className="border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(29,78,216,0.08)] cursor-pointer hover:border-blue-200 group"
+                className="card p-8 cursor-pointer group"
               >
-                <span className="text-sm font-mono text-blue-300 tracking-widest">
+                <span className="numeral text-sm text-brand/60">
                   {s.number}
                 </span>
-                <h3 className="text-xl font-semibold text-[#0F172A] mt-4 mb-3 tracking-tight">
+                <h3 className="font-display text-xl font-semibold text-text mt-4 mb-3 tracking-tight">
                   {s.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-3">
+                <p className="text-sm text-muted leading-relaxed mb-3">
                   {s.description}
                 </p>
-                <p className="text-xs font-semibold text-blue-600 mb-5">
+                <p className="text-xs font-semibold text-brand mb-5">
                   &#8594; {s.result}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {s.features.map((f) => (
                     <span
                       key={f}
-                      className="text-xs text-gray-400 border border-gray-100 rounded-full px-3 py-1 group-hover:border-blue-100 group-hover:text-blue-500 transition-colors"
+                      className="text-xs text-muted border border-line rounded-full px-3 py-1 group-hover:border-brand/30 group-hover:text-brand transition-colors"
                     >
                       {f}
                     </span>
@@ -115,26 +113,25 @@ export default function Solutions() {
             ))}
           </div>
 
-          {/* Platform ODR block */}
+          {/* Platform ODR block — dark */}
           <motion.div
             variants={fadeUp}
-            className="mt-20 bg-[#0C1B3A] rounded-2xl p-10 md:p-14"
+            className="mt-20 bg-ink border border-white/10 rounded-2xl p-10 md:p-14"
           >
             <div className="grid md:grid-cols-2 gap-10 items-start">
               <div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-blue-400 mb-4">
-                  Plataforma ODR
-                </p>
-                <h3 className="text-3xl md:text-4xl font-medium tracking-tighter leading-[1.1] text-white">
-                  Resolución de disputas sin fronteras.
+                <p className="eyebrow !text-accent mb-4">Plataforma ODR</p>
+                <h3 className="h-display text-3xl md:text-4xl text-white">
+                  Resolución de disputas{" "}
+                  <span className="text-accent">sin fronteras.</span>
                 </h3>
-                <p className="mt-4 text-blue-200/60 leading-relaxed">
+                <p className="mt-4 text-white/60 leading-relaxed">
                   Resultados rápidos y efectivos. Costos reducidos. Acceso desde
                   cualquier lugar del mundo.
                 </p>
                 <a
                   href="#contacto"
-                  className="group inline-flex items-center gap-2 mt-6 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                  className="group inline-flex items-center gap-2 mt-6 text-sm font-medium text-accent hover:text-white transition-colors"
                 >
                   Explorar la plataforma
                   <span className="transition-transform group-hover:translate-x-1">
@@ -145,8 +142,8 @@ export default function Solutions() {
               <div className="grid grid-cols-2 gap-3">
                 {capabilities.map((c) => (
                   <div key={c} className="flex items-center gap-2.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
-                    <span className="text-sm text-blue-100/80">{c}</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="text-sm text-white/80">{c}</span>
                   </div>
                 ))}
               </div>

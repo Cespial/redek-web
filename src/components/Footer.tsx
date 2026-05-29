@@ -16,7 +16,7 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0C1B3A] text-white py-16">
+    <footer className="bg-ink text-white py-16">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Logo + tagline */}
@@ -29,11 +29,11 @@ export default function Footer() {
                 height={36}
                 className="h-9 w-9 object-contain"
               />
-              <span className="text-xl font-semibold tracking-tight">
+              <span className="font-display text-xl font-semibold tracking-tight">
                 REDEK
               </span>
             </div>
-            <p className="text-sm text-blue-200/60 max-w-xs leading-relaxed">
+            <p className="text-sm text-white/60 max-w-xs leading-relaxed">
               Tecnología de resolución de disputas para organizaciones que
               exigen eficiencia sin sacrificar criterio.
             </p>
@@ -42,7 +42,7 @@ export default function Footer() {
               href="https://www.linkedin.com/company/redek"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-sm text-blue-200/60 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 mt-4 text-sm text-white/60 hover:text-accent transition-colors"
             >
               <svg
                 className="w-4 h-4"
@@ -58,15 +58,13 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-blue-300 mb-4">
-              Navegación
-            </h4>
+            <h4 className="eyebrow !text-accent mb-4">Navegación</h4>
             <div className="flex flex-col gap-2.5">
               {navLinks.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-sm text-blue-100/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {l.label}
                 </a>
@@ -76,15 +74,13 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-blue-300 mb-4">
-              Legal
-            </h4>
+            <h4 className="eyebrow !text-accent mb-4">Legal</h4>
             <div className="flex flex-col gap-2.5">
               {legalLinks.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
-                  className="text-sm text-blue-100/60 hover:text-white transition-colors"
+                  className="text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {l.label}
                 </a>
@@ -94,13 +90,11 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-blue-300 mb-4">
-              Contacto
-            </h4>
+            <h4 className="eyebrow !text-accent mb-4">Contacto</h4>
             <div className="flex flex-col gap-2.5">
               <a
                 href="mailto:info@redek.co"
-                className="text-sm text-blue-100/60 hover:text-white transition-colors"
+                className="text-sm text-white/60 hover:text-white transition-colors"
               >
                 info@redek.co
               </a>
@@ -108,7 +102,7 @@ export default function Footer() {
                 href="https://redek.co"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-100/60 hover:text-white transition-colors"
+                className="text-sm text-white/60 hover:text-white transition-colors"
               >
                 redek.co
               </a>
@@ -118,10 +112,10 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-blue-200/50">
+          <p className="text-xs text-white/50">
             &copy; {new Date().getFullYear()} REDEK. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-blue-200/50">
+          <p className="text-xs text-white/50">
             Soluciones Tecnológicas para Resolución de Disputas
           </p>
         </div>

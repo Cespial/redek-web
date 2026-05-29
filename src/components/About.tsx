@@ -36,8 +36,8 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <section id="nosotros" className="py-32 bg-blue-50/40">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="nosotros" className="divide-section bg-bg-soft py-28 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -45,25 +45,23 @@ export default function About() {
           variants={{
             visible: { transition: { staggerChildren: 0.12 } },
           }}
-          className="grid md:grid-cols-2 gap-16 items-start"
+          className="grid items-start gap-16 md:grid-cols-2"
         >
           {/* Left — sticky */}
           <div className="md:sticky md:top-28">
-            <motion.p
-              variants={fadeUp}
-              className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
-            >
+            <motion.p variants={fadeUp} className="eyebrow mb-4">
               Conoce a REDEK
             </motion.p>
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A]"
+              className="h-display text-4xl md:text-5xl"
             >
-              Pionera en soluciones jurídicas digitales.
+              Pionera en soluciones jurídicas{" "}
+              <span className="text-brand">digitales.</span>
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-6 text-gray-500 text-lg leading-relaxed"
+              className="mt-6 text-lg leading-relaxed text-muted"
             >
               Somos especialistas en sistemas de resolución electrónica de
               disputas (ODR). Combinamos profundo conocimiento legal con
@@ -78,16 +76,16 @@ export default function About() {
               <motion.div
                 key={p.number}
                 variants={fadeUp}
-                className="flex gap-5 bg-white/60 rounded-xl px-6 py-5 border border-blue-100/40"
+                className="card flex gap-5 px-6 py-5"
               >
-                <span className="text-sm font-mono text-blue-300 tracking-widest mt-0.5 shrink-0">
+                <span className="numeral mt-0.5 shrink-0 text-sm text-brand">
                   {p.number}
                 </span>
                 <div>
-                  <h3 className="text-base font-semibold text-[#0F172A] mb-1">
+                  <h3 className="font-display mb-1 text-base font-semibold text-text">
                     {p.title}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                  <p className="text-sm leading-relaxed text-muted">
                     {p.description}
                   </p>
                 </div>

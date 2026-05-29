@@ -1,15 +1,17 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
 import Clients from "@/components/Clients";
+import Stats from "@/components/Stats";
 import About from "@/components/About";
+import HowItWorks from "@/components/HowItWorks";
 import Solutions from "@/components/Solutions";
-import CTABand from "@/components/CTABand";
 import AIFeatures from "@/components/AIFeatures";
 import Testimonial from "@/components/Testimonial";
 import TrustBar from "@/components/TrustBar";
 import Team from "@/components/Team";
+import CTABand from "@/components/CTABand";
 import Contact from "@/components/Contact";
+import Subscribe from "@/components/Subscribe";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -17,16 +19,18 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <Stats />
       <Clients />
+      <Stats />
       <About />
+      <HowItWorks />
       <Solutions />
-      <CTABand />
       <AIFeatures />
       <Testimonial />
       <TrustBar />
       <Team />
+      <CTABand />
       <Contact />
+      <Subscribe />
       <Footer />
     </main>
   );

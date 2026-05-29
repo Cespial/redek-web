@@ -16,25 +16,25 @@ const fadeUp = {
 
 export default function Stats() {
   return (
-    <section className="py-20 bg-white border-y border-gray-100">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="divide-section border-b border-line bg-bg py-20">
+      <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0"
+          className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-0"
         >
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
               variants={fadeUp}
-              className={`text-center ${i > 0 ? "lg:border-l lg:border-gray-100" : ""}`}
+              className={`text-center ${i > 0 ? "lg:border-l lg:border-line" : ""}`}
             >
-              <p className="text-4xl md:text-5xl font-semibold tracking-tighter text-blue-700">
+              <p className="numeral text-4xl font-bold text-brand md:text-5xl">
                 {s.value}
               </p>
-              <p className="mt-2 text-sm text-gray-500">{s.label}</p>
+              <p className="mt-2 text-sm text-muted">{s.label}</p>
             </motion.div>
           ))}
         </motion.div>

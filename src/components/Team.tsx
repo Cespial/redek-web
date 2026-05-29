@@ -19,51 +19,49 @@ const fadeUp = {
 
 export default function Team() {
   return (
-    <section id="equipo" className="py-32 bg-blue-50/40">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="equipo" className="divide-section bg-bg-soft py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
         >
-          <motion.p
-            variants={fadeUp}
-            className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4"
-          >
+          <motion.p variants={fadeUp} className="eyebrow mb-4">
             Nuestro Equipo
           </motion.p>
           <motion.h2
             variants={fadeUp}
-            className="text-4xl md:text-5xl font-medium tracking-tighter leading-[1.1] text-[#0F172A] max-w-2xl"
+            className="h-display max-w-2xl text-4xl md:text-5xl"
           >
-            Las personas detrás de la precisión.
+            Las personas detrás de la{" "}
+            <span className="text-brand">precisión</span>.
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-gray-500 text-lg max-w-2xl"
+            className="mt-6 max-w-2xl text-lg text-muted"
           >
             Un equipo multidisciplinario que combina derecho, tecnología y
             visión de negocio.
           </motion.p>
 
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((m) => (
               <motion.div
                 key={m.name}
                 variants={fadeUp}
-                className="flex items-center gap-4 bg-white border border-blue-100/60 rounded-xl px-5 py-4 hover:border-blue-200 transition-all duration-300 hover:-translate-y-0.5 group"
+                className="card group flex items-center gap-4 px-5 py-4"
               >
-                <div className="w-10 h-10 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
-                  <span className="text-xs font-semibold text-blue-600">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-bg-soft transition-colors group-hover:border-brand">
+                  <span className="numeral text-xs font-semibold text-brand">
                     {m.initials}
                   </span>
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-sm font-semibold text-[#0F172A] truncate">
+                  <h3 className="truncate text-sm font-semibold text-text">
                     {m.name}
                   </h3>
-                  <p className="text-xs text-gray-400 truncate">{m.role}</p>
+                  <p className="truncate text-xs text-muted">{m.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -72,18 +70,18 @@ export default function Team() {
             <motion.a
               href="#contacto"
               variants={fadeUp}
-              className="flex items-center gap-4 border border-dashed border-blue-200 rounded-xl px-5 py-4 hover:border-blue-400 hover:bg-blue-50/50 transition-all duration-300 group"
+              className="card group flex items-center gap-4 border-dashed px-5 py-4"
             >
-              <div className="w-10 h-10 rounded-full border border-blue-200 flex items-center justify-center shrink-0 group-hover:border-blue-400 transition-colors">
-                <span className="text-lg text-blue-400 group-hover:text-blue-600 transition-colors leading-none">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line transition-colors group-hover:border-brand">
+                <span className="text-lg leading-none text-muted transition-colors group-hover:text-brand">
                   +
                 </span>
               </div>
               <div className="min-w-0">
-                <h3 className="text-sm font-semibold text-blue-600">
+                <h3 className="text-sm font-semibold text-brand">
                   Únete al equipo
                 </h3>
-                <p className="text-xs text-gray-400">Estamos creciendo</p>
+                <p className="text-xs text-muted">Estamos creciendo</p>
               </div>
             </motion.a>
           </div>

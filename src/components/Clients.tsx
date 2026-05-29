@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  { name: "Ministerio de Justicia", style: "uppercase tracking-widest text-base font-bold" },
-  { name: "Cámara de Comercio", style: "text-lg font-semibold tracking-tight" },
-  { name: "Superintendencia de Sociedades", style: "uppercase tracking-wider text-sm font-bold" },
-  { name: "Corte de Arbitraje", style: "text-lg font-light tracking-wide italic" },
-  { name: "Banco de Desarrollo", style: "uppercase tracking-[0.25em] text-sm font-semibold" },
-  { name: "Fiscalía General", style: "text-xl font-bold tracking-tighter" },
-  { name: "Defensoría del Pueblo", style: "text-base font-medium tracking-wide" },
-  { name: "Procuraduría Nacional", style: "uppercase tracking-widest text-sm font-bold" },
+  "Ministerio de Justicia",
+  "Cámara de Comercio",
+  "Superintendencia de Sociedades",
+  "Corte de Arbitraje",
+  "Banco de Desarrollo",
+  "Fiscalía General",
+  "Defensoría del Pueblo",
+  "Procuraduría Nacional",
 ];
 
 const fadeUp = {
@@ -20,14 +20,14 @@ const fadeUp = {
 
 export default function Clients() {
   return (
-    <section className="py-14 bg-white overflow-hidden">
+    <section id="confianza" className="divide-section py-16 bg-bg overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <motion.p
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="text-xs font-semibold tracking-widest uppercase text-gray-400 text-center mb-10"
+          className="eyebrow text-center mb-12"
         >
           Organizaciones que confían en nosotros
         </motion.p>
@@ -35,19 +35,17 @@ export default function Clients() {
 
       {/* Infinite marquee */}
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
         <div className="flex animate-marquee">
-          {[...clients, ...clients].map((c, i) => (
+          {[...clients, ...clients].map((name, i) => (
             <div
-              key={`${c.name}-${i}`}
+              key={`${name}-${i}`}
               className="flex-shrink-0 px-10 flex items-center"
             >
-              <span
-                className={`text-gray-300 whitespace-nowrap select-none ${c.style}`}
-              >
-                {c.name}
+              <span className="font-display text-lg font-semibold tracking-tight text-muted/45 whitespace-nowrap select-none transition-colors duration-300 hover:text-brand">
+                {name}
               </span>
             </div>
           ))}
