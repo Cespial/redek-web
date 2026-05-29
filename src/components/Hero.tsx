@@ -14,11 +14,12 @@ import { useCopy } from "@/i18n/locale";
 
 const COPY = {
   es: {
-    eyebrowPrefix: "ODR para",
+    eyebrow: "Resolución de disputas en línea",
+    h1Pre: "ODR para",
     rotating: ["conciliación", "mediación", "arbitraje", "negociación"],
-    titleA: "Precisión algorítmica.",
-    titleB: "Criterio humano.",
-    body: "Transformamos la complejidad jurídica en resoluciones simples. Tecnología que ordena los datos para que tu equipo decida lo que importa.",
+    tagA: "Precisión algorítmica.",
+    tagB: "Criterio humano.",
+    body: "Negociación, mediación y arbitraje en línea — con evidencia trazable y acuerdos vinculantes, en días.",
     ctaPrimary: "Agendar demo privada",
     ctaSecondary: "Ver soluciones",
     trust1: "ODR en operación en 12 países",
@@ -26,11 +27,12 @@ const COPY = {
     scroll: "Scroll",
   },
   en: {
-    eyebrowPrefix: "ODR for",
+    eyebrow: "Online dispute resolution",
+    h1Pre: "ODR for",
     rotating: ["conciliation", "mediation", "arbitration", "negotiation"],
-    titleA: "Algorithmic precision.",
-    titleB: "Human judgment.",
-    body: "We turn legal complexity into simple resolutions. Technology that organizes the data so your team decides what matters.",
+    tagA: "Algorithmic precision.",
+    tagB: "Human judgment.",
+    body: "Online negotiation, mediation and arbitration — with traceable evidence and binding settlements, in days.",
     ctaPrimary: "Book a private demo",
     ctaSecondary: "See solutions",
     trust1: "ODR live in 12 countries",
@@ -94,30 +96,36 @@ export default function Hero() {
           animate="visible"
           className="max-w-2xl"
         >
-          <motion.div variants={fadeUp} className="mb-7 flex items-center gap-3">
+          <motion.div variants={fadeUp} className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-brand" />
-            <span className="eyebrow flex gap-[0.4em]">
-              {t.eyebrowPrefix}{" "}
-              <RotatingWord words={[...t.rotating]} className="text-brand" />
-            </span>
+            <span className="eyebrow">{t.eyebrow}</span>
           </motion.div>
 
+          {/* Titular protagonista: ODR para [palabra rotatoria] */}
           <motion.h1 variants={fadeUp} className="display-1">
-            {t.titleA}
+            {t.h1Pre}
             <br />
-            <span className="brand-sweep text-brand">{t.titleB}</span>
+            <RotatingWord words={[...t.rotating]} className="text-brand" />
           </motion.h1>
+
+          {/* Tagline de marca (apoyo) */}
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 font-display text-2xl font-semibold tracking-tight text-text md:text-3xl"
+          >
+            {t.tagA} <span className="text-muted">{t.tagB}</span>
+          </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="lead mt-7 max-w-lg text-lg leading-relaxed text-muted md:text-xl"
+            className="lead mt-5 max-w-lg text-base leading-relaxed text-muted md:text-lg"
           >
             {t.body}
           </motion.p>
 
           <motion.div
             variants={fadeUp}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-9 flex flex-wrap items-center gap-3"
           >
             <a href="#contacto" className="btn-primary group">
               {t.ctaPrimary}

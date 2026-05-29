@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { LocaleProvider } from "@/i18n/locale";
 
-// Geist — neo-grotesca limpia (estilo Vercel/Pinecone). Una familia para
-// display y body; exponemos ambas variables apuntando a la misma fuente.
-const geist = Geist({
-  variable: "--font-geist",
+// Hanken Grotesk — grotesca neutra-cálida, el análogo libre más cercano a
+// GT Planar (la tipografía de pinecone.io, comercial). Display + body.
+const sans = Hanken_Grotesk({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
@@ -78,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={geist.variable} suppressHydrationWarning>
+    <html lang="es" className={sans.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
