@@ -1,6 +1,7 @@
 # REDEK Web — Plan de Sprints hacia nivel Pinecone "o mejor"
 
-> **ESTADO:** ✅ Sprint 1 (jerarquía/marca/tactilidad) y ✅ Sprint 2 (i18n EN/ES) COMPLETOS y desplegados. Tipografía → **Geist**. Pendientes: S3 (motion con profundidad), S4 (superficies/radios/elevación), S5 (confianza/robustez).
+> **ESTADO:** ✅ Los 5 sprints COMPLETOS y desplegados. Tipografía → **Geist**.
+> S1 jerarquía/marca/tactilidad · S2 i18n EN/ES · S3 motion con profundidad (parallax hero, magic-move navbar + tabs) · S4 tokens de radio/elevación · S5 monogramas SVG en Clients + cross-fade del canvas al cambiar tema.
 
 > Auditoría adversarial: 71 hallazgos en 9 dimensiones, redek-web vs pinecone.io.
 > Estado del repo: 17 secciones, todo texto **hardcoded en español**, sin capa i18n, `lang="es"` fijo en `layout.tsx:45`.

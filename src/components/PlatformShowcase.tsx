@@ -663,7 +663,7 @@ export default function PlatformShowcase() {
 
           {/* Columna mockup */}
           <motion.div variants={fadeUp}>
-            <div className="card overflow-hidden !rounded-2xl">
+            <div className="card elev-1 overflow-hidden !rounded-2xl">
               {/* Barra de ventana */}
               <div className="flex items-center gap-2 border-b border-line bg-bg-soft px-4 py-3">
                 <div className="flex gap-1.5" aria-hidden="true">
@@ -723,14 +723,21 @@ export default function PlatformShowcase() {
                         {...pressable}
                         onKeyDown={(e) => onTabKeyDown(e, idx)}
                         onClick={() => setTab(item)}
-                        className={`flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm font-medium transition-colors sm:px-3 ${
-                          active
-                            ? "bg-brand/10 text-brand"
-                            : "text-muted hover:bg-bg hover:text-text"
+                        className={`relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-sm font-medium transition-colors sm:px-3 ${
+                          active ? "text-brand" : "text-muted hover:text-text"
                         }`}
                       >
-                        <NavIcon name={item} />
-                        <span className="hidden sm:inline">{t.tabs[item]}</span>
+                        {active && (
+                          <motion.span
+                            layoutId="plat-tab-bg"
+                            className="absolute inset-0 rounded-lg bg-brand/10"
+                            transition={{ type: "spring", stiffness: 400, damping: 34 }}
+                          />
+                        )}
+                        <span className="relative z-10 flex items-center gap-2.5">
+                          <NavIcon name={item} />
+                          <span className="hidden sm:inline">{t.tabs[item]}</span>
+                        </span>
                       </motion.button>
                     );
                   })}

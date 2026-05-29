@@ -90,11 +90,15 @@ export default function Navbar() {
               }`}
             >
               {t.links[i]}
-              <span
-                className={`absolute -bottom-1 left-0 h-px w-full origin-left bg-brand transition-transform ${
-                  active === link.id ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                }`}
-              />
+              {active === link.id ? (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute -bottom-1 left-0 right-0 h-px bg-brand"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                />
+              ) : (
+                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-brand/50 transition-transform group-hover:scale-x-100" />
+              )}
             </a>
           ))}
           <LanguageToggle />

@@ -38,6 +38,21 @@ const COPY: { es: ClientsCopy; en: ClientsCopy } = {
   },
 };
 
+const STOP = new Set([
+  "de", "del", "la", "el", "los", "las", "y",
+  "of", "the", "and", "for",
+]);
+function initials(name: string) {
+  const words = name
+    .replace(/['’]s/g, "")
+    .split(/\s+/)
+    .filter((w) => w && !STOP.has(w.toLowerCase()));
+  return words
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 export default function Clients() {
   const t = useCopy(COPY);
   const clients = t.clients;
@@ -66,9 +81,14 @@ export default function Clients() {
             <div
               key={`${name}-${i}`}
               aria-hidden={i >= clients.length}
-              className="flex-shrink-0 px-10 flex items-center"
+              className="group flex flex-shrink-0 items-center gap-3 px-8"
             >
-              <span className="font-display text-lg font-semibold tracking-tight text-muted/45 whitespace-nowrap select-none transition-colors duration-300 hover:text-brand">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-line text-muted/70 transition-colors duration-300 group-hover:border-brand/50 group-hover:text-brand">
+                <span className="numeral text-xs font-bold tracking-tight">
+                  {initials(name)}
+                </span>
+              </span>
+              <span className="select-none whitespace-nowrap font-display text-base font-semibold tracking-tight text-muted/55 transition-colors duration-300 group-hover:text-text">
                 {name}
               </span>
             </div>

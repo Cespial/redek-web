@@ -22,6 +22,12 @@
   --danger: #d14343;
   --grid: rgba(8, 16, 48, 0.045);
   --card: #ffffff;
+  /* S4 — escala de radios (3) y elevación (2 niveles) */
+  --radius-sm: 0.625rem;
+  --radius-md: 1rem;
+  --radius-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(8, 16, 48, 0.04), 0 8px 24px -16px rgba(8, 16, 48, 0.18);
+  --shadow-2: 0 2px 4px rgba(8, 16, 48, 0.05), 0 24px 48px -24px rgba(20, 82, 240, 0.28);
   --font-display: var(--font-geist);
   --font-body: var(--font-geist);
   color-scheme: light;
@@ -43,6 +49,8 @@ html.dark {
   --danger: #f0716f;
   --grid: rgba(130, 160, 230, 0.06);
   --card: #0c1426;
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -16px rgba(0, 0, 0, 0.6);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 24px 56px -22px rgba(70, 113, 255, 0.45);
   color-scheme: dark;
 }
 
@@ -172,14 +180,22 @@ body {
 .card {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
     background-color 0.3s ease;
 }
 .card:hover {
   border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
   transform: translateY(-3px);
-  box-shadow: 0 18px 40px -24px rgba(20, 82, 240, 0.35);
+  box-shadow: var(--shadow-2);
+}
+
+/* S4 — elevación intencional. elev-1 = reposo flotante · elev-2 = hover */
+.elev-1 {
+  box-shadow: var(--shadow-1);
+}
+.elev-2 {
+  box-shadow: var(--shadow-2);
 }
 
 /* Primary / secondary buttons */

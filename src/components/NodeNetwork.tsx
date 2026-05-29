@@ -26,27 +26,51 @@ export default function NodeNetwork() {
     let raf = 0;
     let running = true;
 
-    // Theme-aware colors, read from CSS vars (re-read on theme change).
+    // Theme-aware colors. Strings used by the draw code, derived each frame
+    // from `cur` which eases toward `tgt` for a smooth theme cross-fade.
     let BRAND = "20, 82, 240";
     let ACCENT = "34, 167, 224";
     let DEEP = "0, 30, 108";
-    const hexToRgb = (hex: string) => {
+    const hexToArr = (hex: string): [number, number, number] | null => {
       const h = hex.trim().replace("#", "");
       if (h.length < 6) return null;
       const r = parseInt(h.slice(0, 2), 16);
       const g = parseInt(h.slice(2, 4), 16);
       const b = parseInt(h.slice(4, 6), 16);
       if ([r, g, b].some((n) => Number.isNaN(n))) return null;
-      return `${r}, ${g}, ${b}`;
+      return [r, g, b];
     };
+    const cur = { brand: [20, 82, 240], accent: [34, 167, 224], deep: [0, 30, 108] };
+    const tgt = { brand: [20, 82, 240], accent: [34, 167, 224], deep: [0, 30, 108] };
     const readColors = () => {
       const cs = getComputedStyle(document.documentElement);
-      BRAND = hexToRgb(cs.getPropertyValue("--brand")) || BRAND;
-      ACCENT = hexToRgb(cs.getPropertyValue("--accent")) || ACCENT;
-      DEEP = hexToRgb(cs.getPropertyValue("--brand-deep")) || DEEP;
+      tgt.brand = hexToArr(cs.getPropertyValue("--brand")) || tgt.brand;
+      tgt.accent = hexToArr(cs.getPropertyValue("--accent")) || tgt.accent;
+      tgt.deep = hexToArr(cs.getPropertyValue("--brand-deep")) || tgt.deep;
+    };
+    const lerpColors = () => {
+      (["brand", "accent", "deep"] as const).forEach((k) => {
+        for (let i = 0; i < 3; i++) cur[k][i] += (tgt[k][i] - cur[k][i]) * 0.08;
+      });
+      BRAND = cur.brand.map(Math.round).join(", ");
+      ACCENT = cur.accent.map(Math.round).join(", ");
+      DEEP = cur.deep.map(Math.round).join(", ");
     };
     readColors();
-    const themeObserver = new MutationObserver(readColors);
+    cur.brand = [...tgt.brand];
+    cur.accent = [...tgt.accent];
+    cur.deep = [...tgt.deep];
+    lerpColors();
+    const themeObserver = new MutationObserver(() => {
+      readColors();
+      if (reduce) {
+        cur.brand = [...tgt.brand];
+        cur.accent = [...tgt.accent];
+        cur.deep = [...tgt.deep];
+        lerpColors();
+        step(0);
+      }
+    });
     themeObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
@@ -127,6 +151,7 @@ export default function NodeNetwork() {
     }
 
     function step(t: number) {
+      lerpColors();
       ctx!.clearRect(0, 0, width, height);
       drawRings(t);
 

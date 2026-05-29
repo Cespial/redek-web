@@ -1,6 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import NodeNetwork from "./NodeNetwork";
 import RotatingWord from "./RotatingWord";
 import { EASE_OUT_EXPO } from "@/lib/motion";
@@ -49,20 +55,35 @@ const fadeUp = {
 
 export default function Hero() {
   const t = useCopy(COPY);
-  return (
-    <section className="relative min-h-screen overflow-hidden bg-bg">
-      {/* Subtle grid backdrop */}
-      <div className="absolute inset-0 bg-grid bg-grid-fade" />
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 90]);
+  const netY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140]);
 
-      {/* Living node network — right half */}
-      <div className="absolute inset-0">
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen overflow-hidden bg-bg"
+    >
+      {/* Subtle grid backdrop — parallax */}
+      <motion.div
+        style={{ y: gridY }}
+        className="absolute inset-0 bg-grid bg-grid-fade"
+      />
+
+      {/* Living node network — right half (parallax) */}
+      <motion.div style={{ y: netY }} className="absolute inset-0">
         <div className="absolute right-0 top-0 h-full w-full md:w-[62%]">
           <NodeNetwork />
         </div>
         {/* fade the network into the text on the left */}
         <div className="absolute inset-y-0 left-0 hidden md:block w-[46%] bg-gradient-to-r from-bg via-bg/85 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent" />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pt-32 pb-24">
