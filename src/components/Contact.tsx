@@ -73,10 +73,14 @@ export default function Contact() {
             onSubmit={(e) => e.preventDefault()}
           >
             <div>
-              <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted">
+              <label
+                htmlFor="contact-nombre"
+                className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              >
                 Nombre
               </label>
               <input
+                id="contact-nombre"
                 type="text"
                 required
                 placeholder="Tu nombre completo"
@@ -84,10 +88,14 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted">
+              <label
+                htmlFor="contact-email"
+                className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              >
                 Email corporativo
               </label>
               <input
+                id="contact-email"
                 type="email"
                 required
                 placeholder="tu@empresa.com"
@@ -95,20 +103,28 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted">
+              <label
+                htmlFor="contact-telefono"
+                className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              >
                 Teléfono
               </label>
               <input
+                id="contact-telefono"
                 type="tel"
                 placeholder="+57 300 000 0000"
                 className="w-full border-b border-line bg-transparent py-3 text-text placeholder:text-muted/50 transition-colors focus:border-brand focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted">
+              <label
+                htmlFor="contact-desafio"
+                className="mb-2 block text-xs font-medium uppercase tracking-wide text-muted"
+              >
                 ¿Cuál es tu mayor desafío?
               </label>
               <textarea
+                id="contact-desafio"
                 rows={4}
                 required
                 placeholder="Ej: Necesitamos reducir los tiempos de resolución de disputas comerciales..."

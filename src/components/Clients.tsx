@@ -42,6 +42,7 @@ export default function Clients() {
           {[...clients, ...clients].map((name, i) => (
             <div
               key={`${name}-${i}`}
+              aria-hidden={i >= clients.length}
               className="flex-shrink-0 px-10 flex items-center"
             >
               <span className="font-display text-lg font-semibold tracking-tight text-muted/45 whitespace-nowrap select-none transition-colors duration-300 hover:text-brand">

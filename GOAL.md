@@ -32,7 +32,21 @@ Legal-tech limpio y preciso. El logo de REDEK **es una red de nodos** → toda l
 10. [x] **QA visual** sección por sección comparada contra Pinecone: nítido, coherente, identidad propia.
 11. [x] **Build limpio** (`npm run build` sin errores, TypeScript OK, prerender estático).
 
-## Estado: ✅ Nivel Pinecone alcanzado. Pendiente: decisión de push (repo destino + método de deploy).
+## Estado fase 1: ✅ Nivel Pinecone alcanzado.
+
+## Fase 2 — Profundidad UI/UX, interactividad y narrativa (✅)
+1. [x] **Modo oscuro** claro/oscuro con toggle, persistencia y sin parpadeo (tokens theme-aware).
+2. [x] **Hero reactivo al cursor** (repulsión + conexiones iluminadas) y theme-aware.
+3. [x] **Scroll-spy** en navbar (sección activa) + **barra de progreso** de lectura.
+4. [x] **Flujo ODR interactivo** (stepper clickable + auto-avance + panel de detalle) — centerpiece narrativo.
+5. [x] **Mockup de producto** "La plataforma": consola con tabs (Casos/Mediación/Evidencia/Métricas) accesibles por teclado.
+6. [x] **Sección Problema** (abre la narrativa) + **FAQ** acordeón accesible.
+7. [x] **Stats count-up** al entrar en viewport + **carrusel de testimonios** (autoplay + controles + dots).
+8. [x] **Tokens de estado** (success/warning/danger) theme-aware; sin colores hardcodeados.
+9. [x] **A11y**: labels asociados, roving tabindex en tabs, aria en carrusel, focus states, reduced-motion.
+10. [x] **QA en claro y oscuro** sección por sección + verificación de interacciones; **build limpio**.
+
+## Pendiente: decisión de push a jacobo-arch/redek.github.io (Cespial/redek-web → Vercel ya activo).
 
 ## Workflow
 Foundation (tokens+fuentes+hero) hecha a mano → fan-out paralelo de rediseño por componente (1 agente = 1 archivo) → QA visual adversarial contra Pinecone → iterar hasta ✅ → mostrar localhost → push (con confirmación).

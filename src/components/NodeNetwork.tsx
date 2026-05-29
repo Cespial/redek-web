@@ -5,8 +5,9 @@ import { useEffect, useRef } from "react";
 /**
  * NodeNetwork — REDEK's signature hero visualization.
  * A living echo of the REDEK logo: nodes that drift and connect, like
- * disputes converging toward resolution, layered over concentric rings.
- * Pure canvas, dpr-aware, pauses off-screen, respects reduced-motion.
+ * disputes converging toward resolution, over concentric rings.
+ * Cursor-reactive (gentle repulsion + highlighted links), theme-aware,
+ * dpr-aware, pauses off-screen, respects reduced-motion.
  */
 export default function NodeNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,9 +26,39 @@ export default function NodeNetwork() {
     let raf = 0;
     let running = true;
 
+    // Theme-aware colors, read from CSS vars (re-read on theme change).
+    let BRAND = "20, 82, 240";
+    let ACCENT = "34, 167, 224";
+    let DEEP = "0, 30, 108";
+    const hexToRgb = (hex: string) => {
+      const h = hex.trim().replace("#", "");
+      if (h.length < 6) return null;
+      const r = parseInt(h.slice(0, 2), 16);
+      const g = parseInt(h.slice(2, 4), 16);
+      const b = parseInt(h.slice(4, 6), 16);
+      if ([r, g, b].some((n) => Number.isNaN(n))) return null;
+      return `${r}, ${g}, ${b}`;
+    };
+    const readColors = () => {
+      const cs = getComputedStyle(document.documentElement);
+      BRAND = hexToRgb(cs.getPropertyValue("--brand")) || BRAND;
+      ACCENT = hexToRgb(cs.getPropertyValue("--accent")) || ACCENT;
+      DEEP = hexToRgb(cs.getPropertyValue("--brand-deep")) || DEEP;
+    };
+    readColors();
+    const themeObserver = new MutationObserver(readColors);
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    const mouse = { x: -9999, y: -9999, active: false };
+
     type Node = {
       x: number;
       y: number;
+      hx: number; // home position
+      hy: number;
       vx: number;
       vy: number;
       r: number;
@@ -35,13 +66,7 @@ export default function NodeNetwork() {
       pulse: number;
     };
     let nodes: Node[] = [];
-
-    // Focal point of the concentric rings (right-of-center).
     const focal = { x: 0.62, y: 0.46 };
-
-    const BRAND = "20, 82, 240";
-    const ACCENT = "34, 167, 224";
-    const DEEP = "0, 30, 108";
 
     function resize() {
       const parent = canvas!.parentElement!;
@@ -61,9 +86,13 @@ export default function NodeNetwork() {
       const count = Math.max(18, Math.min(46, Math.round(area / 22000)));
       nodes = Array.from({ length: count }, () => {
         const accent = Math.random() < 0.28;
+        const x = Math.random() * width;
+        const y = Math.random() * height;
         return {
-          x: Math.random() * width,
-          y: Math.random() * height,
+          x,
+          y,
+          hx: x,
+          hy: y,
           vx: (Math.random() - 0.5) * 0.18,
           vy: (Math.random() - 0.5) * 0.18,
           r: accent ? 1.6 + Math.random() * 1.4 : 1.2 + Math.random() * 1.8,
@@ -86,7 +115,6 @@ export default function NodeNetwork() {
         ctx!.lineWidth = 1;
         ctx!.stroke();
       }
-      // focal crosshair
       ctx!.strokeStyle = `rgba(${BRAND}, 0.5)`;
       ctx!.lineWidth = 1;
       ctx!.beginPath();
@@ -102,15 +130,29 @@ export default function NodeNetwork() {
       ctx!.clearRect(0, 0, width, height);
       drawRings(t);
 
-      // move
+      const influence = Math.min(width, height) * 0.22;
       for (const n of nodes) {
+        // drift + spring back home
         n.x += n.vx;
         n.y += n.vy;
+        n.x += (n.hx - n.x) * 0.005;
+        n.y += (n.hy - n.y) * 0.005;
         if (n.x < 0 || n.x > width) n.vx *= -1;
         if (n.y < 0 || n.y > height) n.vy *= -1;
+        // gentle cursor repulsion
+        if (mouse.active) {
+          const dx = n.x - mouse.x;
+          const dy = n.y - mouse.y;
+          const d = Math.hypot(dx, dy);
+          if (d < influence && d > 0.01) {
+            const f = (1 - d / influence) * 1.4;
+            n.x += (dx / d) * f;
+            n.y += (dy / d) * f;
+          }
+        }
       }
 
-      // connections
+      // node-node connections
       const maxDist = Math.min(width, height) * 0.34;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -130,6 +172,32 @@ export default function NodeNetwork() {
             ctx!.stroke();
           }
         }
+      }
+
+      // cursor links — illuminate nearby nodes
+      if (mouse.active) {
+        const linkR = Math.min(width, height) * 0.3;
+        for (const n of nodes) {
+          const dx = n.x - mouse.x;
+          const dy = n.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < linkR) {
+            const o = (1 - dist / linkR) * 0.8;
+            ctx!.strokeStyle = `rgba(${ACCENT}, ${o})`;
+            ctx!.lineWidth = 1.1;
+            ctx!.beginPath();
+            ctx!.moveTo(mouse.x, mouse.y);
+            ctx!.lineTo(n.x, n.y);
+            ctx!.stroke();
+          }
+        }
+        const halo = ctx!.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 26);
+        halo.addColorStop(0, `rgba(${ACCENT}, 0.5)`);
+        halo.addColorStop(1, `rgba(${ACCENT}, 0)`);
+        ctx!.fillStyle = halo;
+        ctx!.beginPath();
+        ctx!.arc(mouse.x, mouse.y, 26, 0, Math.PI * 2);
+        ctx!.fill();
       }
 
       // nodes
@@ -156,16 +224,27 @@ export default function NodeNetwork() {
     }
 
     resize();
-    if (reduce) {
-      step(0); // one static frame
-    } else {
-      raf = requestAnimationFrame(step);
-    }
+    if (reduce) step(0);
+    else raf = requestAnimationFrame(step);
 
     const onResize = () => resize();
     window.addEventListener("resize", onResize);
 
-    // Pause when scrolled away to save battery.
+    const onMove = (e: PointerEvent) => {
+      const rect = canvas!.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active =
+        mouse.x >= 0 && mouse.x <= width && mouse.y >= 0 && mouse.y <= height;
+    };
+    const onLeave = () => {
+      mouse.active = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerleave", onLeave);
+
     const io = new IntersectionObserver(
       ([entry]) => {
         running = entry.isIntersecting;
@@ -181,15 +260,14 @@ export default function NodeNetwork() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerleave", onLeave);
       io.disconnect();
+      themeObserver.disconnect();
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      className="absolute inset-0 h-full w-full"
-    />
+    <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full" />
   );
 }

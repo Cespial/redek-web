@@ -52,7 +52,7 @@ export default function Subscribe() {
               required
               autoComplete="email"
               placeholder="tu@empresa.com"
-              className="w-full rounded-full border border-line bg-bg px-5 py-[0.85rem] text-base text-text placeholder:text-muted transition-colors focus:border-brand focus:outline-none sm:max-w-xs"
+              className="w-full rounded-full border border-line bg-bg px-5 py-[0.85rem] text-base text-text placeholder:text-muted/50 transition-colors focus:border-brand focus:outline-none sm:max-w-xs"
             />
             <button type="submit" className="btn-primary justify-center">
               Suscribirme

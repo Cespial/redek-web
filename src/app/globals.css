@@ -1,18 +1,63 @@
 @import "tailwindcss";
 
+/* Enable `dark:` utilities driven by a .dark class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
-   REDEK design system — north-star tokens (ver GOAL.md)
+   REDEK design system — theme-aware tokens (ver GOAL.md)
    ============================================================ */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f6f8fc;
+  --ink: #05103a; /* dark feature panels — fixed in both themes */
+  --panel-text: #ffffff;
+  --text: #0b1220;
+  --muted: #5b6478;
+  --line: #e6e8ef;
+  --brand: #1452f0;
+  --brand-deep: #001e6c;
+  --accent: #1aa3e0;
+  --success: #0f9d6b;
+  --warning: #c77d12;
+  --danger: #d14343;
+  --grid: rgba(8, 16, 48, 0.045);
+  --card: #ffffff;
+  color-scheme: light;
+}
+
+html.dark {
+  --bg: #070b16;
+  --bg-soft: #0d1426;
+  --ink: #050a16;
+  --panel-text: #ffffff;
+  --text: #e9eefb;
+  --muted: #97a3bd;
+  --line: #1d2740;
+  --brand: #4671ff;
+  --brand-deep: #1b3bd8;
+  --accent: #3cb6ec;
+  --success: #34d39e;
+  --warning: #f0b54a;
+  --danger: #f0716f;
+  --grid: rgba(130, 160, 230, 0.06);
+  --card: #0c1426;
+  color-scheme: dark;
+}
+
 @theme inline {
-  --color-bg: #ffffff;
-  --color-bg-soft: #f7f8fb;
-  --color-ink: #05103a;
-  --color-text: #0b1220;
-  --color-muted: #5b6478;
-  --color-line: #e6e8ef;
-  --color-brand: #1452f0;
-  --color-brand-deep: #001e6c;
-  --color-accent: #22a7e0;
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-ink: var(--ink);
+  --color-panel-text: var(--panel-text);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -20,25 +65,21 @@
   --animate-marquee: marquee 38s linear infinite;
 }
 
-:root {
-  --grid: rgba(8, 16, 48, 0.045);
-  --grid-strong: rgba(8, 16, 48, 0.07);
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: var(--color-brand);
+  background: var(--brand);
   color: #fff;
 }
 
@@ -54,7 +95,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-brand);
+  color: var(--brand);
 }
 
 /* Headline base — geometric, tight tracking */
@@ -63,7 +104,7 @@ body {
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.02;
-  color: var(--color-text);
+  color: var(--text);
 }
 
 /* Subtle background grid (Pinecone-style) */
@@ -80,7 +121,7 @@ body {
 
 /* Hairline section divider */
 .divide-section {
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--line);
 }
 
 /* Monospace index numerals (01 · 02) */
@@ -92,13 +133,14 @@ body {
 
 /* Card surface */
 .card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-line);
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 16px;
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 .card:hover {
-  border-color: color-mix(in srgb, var(--color-brand) 45%, var(--color-line));
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
   transform: translateY(-3px);
   box-shadow: 0 18px 40px -24px rgba(20, 82, 240, 0.35);
 }
@@ -108,7 +150,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--color-brand);
+  background: var(--brand);
   color: #fff;
   font-weight: 600;
   font-size: 0.92rem;
@@ -118,31 +160,32 @@ body {
   box-shadow: 0 12px 30px -12px rgba(20, 82, 240, 0.55);
 }
 .btn-primary:hover {
-  background: #0f43d6;
+  background: color-mix(in srgb, var(--brand) 88%, #000);
   transform: translateY(-1px);
 }
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--color-bg);
-  color: var(--color-text);
+  background: var(--bg);
+  color: var(--text);
   font-weight: 600;
   font-size: 0.92rem;
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
-  border: 1px solid var(--color-line);
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  border: 1px solid var(--line);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    background-color 0.3s ease;
 }
 .btn-secondary:hover {
-  border-color: color-mix(in srgb, var(--color-brand) 55%, var(--color-line));
-  color: var(--color-brand);
+  border-color: color-mix(in srgb, var(--brand) 55%, var(--line));
+  color: var(--brand);
   transform: translateY(-1px);
 }
 
 /* Focus visibility (a11y) */
 :where(a, button, input, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--brand);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -154,6 +197,20 @@ body {
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* ODRFlow auto-advance bar — freezes in place when paused */
+@keyframes odr-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.odr-progress {
+  transform-origin: left;
+  animation: odr-progress var(--odr-dur, 3.5s) linear forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

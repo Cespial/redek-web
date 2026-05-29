@@ -1,6 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import {
+  animate,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 
 const stats = [
   { value: "20+", label: "Años de experiencia combinada" },
@@ -14,14 +20,68 @@ const fadeUp = {
   visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
+// Separa un valor como "98%" en prefijo, número y sufijo.
+// Si no contiene un número, target queda en null y se muestra tal cual.
+function parseValue(value: string) {
+  const match = value.match(/-?\d+(?:[.,]\d+)?/);
+  if (!match || match.index === undefined) {
+    return { prefix: value, target: null as number | null, suffix: "", decimals: 0 };
+  }
+  const numStr = match[0];
+  const normalized = numStr.replace(",", ".");
+  const target = parseFloat(normalized);
+  const decimals = normalized.includes(".") ? normalized.split(".")[1].length : 0;
+  return {
+    prefix: value.slice(0, match.index),
+    target,
+    suffix: value.slice(match.index + numStr.length),
+    decimals,
+  };
+}
+
+function StatValue({ value, play }: { value: string; play: boolean }) {
+  const reduceMotion = useReducedMotion();
+  const { prefix, target, suffix, decimals } = parseValue(value);
+  const [display, setDisplay] = useState<string>(
+    target === null || reduceMotion ? value : `${prefix}0${suffix}`,
+  );
+
+  useEffect(() => {
+    // No numérico o reduced-motion: mostrar el valor final sin animar.
+    if (target === null || reduceMotion) {
+      setDisplay(value);
+      return;
+    }
+    if (!play) return;
+
+    const controls = animate(0, target, {
+      duration: 1.4,
+      ease: "easeOut",
+      onUpdate: (latest) => {
+        setDisplay(`${prefix}${latest.toFixed(decimals)}${suffix}`);
+      },
+    });
+    return () => controls.stop();
+  }, [play, target, prefix, suffix, decimals, value, reduceMotion]);
+
+  return (
+    <p className="numeral text-4xl font-bold text-brand md:text-5xl">
+      {display}
+    </p>
+  );
+}
+
 export default function Stats() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+
   return (
     <section className="divide-section border-b border-line bg-bg py-20">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
+          ref={ref}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          animate={inView ? "visible" : "hidden"}
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           className="grid grid-cols-2 gap-10 lg:grid-cols-4 lg:gap-0"
         >
@@ -31,9 +91,7 @@ export default function Stats() {
               variants={fadeUp}
               className={`text-center ${i > 0 ? "lg:border-l lg:border-line" : ""}`}
             >
-              <p className="numeral text-4xl font-bold text-brand md:text-5xl">
-                {s.value}
-              </p>
+              <StatValue value={s.value} play={inView} />
               <p className="mt-2 text-sm text-muted">{s.label}</p>
             </motion.div>
           ))}
