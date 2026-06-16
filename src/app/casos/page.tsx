@@ -144,7 +144,7 @@ export default function Casos() {
           <div className="card elev-1 flex flex-col items-start gap-6 bg-ink p-10 text-white md:flex-row md:items-center md:justify-between md:p-12">
             <div className="max-w-xl">
               <p className="eyebrow mb-3 text-accent">Tu caso</p>
-              <h2 className="display-3 text-white">
+              <h2 className="display-3 !text-white">
                 ¿Qué disputa estás resolviendo demasiado despacio?
               </h2>
               <p className="mt-4 leading-relaxed text-white/70">

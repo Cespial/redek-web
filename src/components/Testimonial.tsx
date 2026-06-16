@@ -163,8 +163,12 @@ export default function Testimonial() {
   };
 
   return (
-    <section className="divide-section bg-bg">
-      <div className="bg-grid bg-grid-fade">
+    <section className="divide-section bg-bg relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-grid bg-grid-fade"
+      />
+      <div className="relative">
         <div className="max-w-4xl mx-auto px-6 py-28 md:py-32">
           <motion.div
             initial={{ y: 30, opacity: 0 }}

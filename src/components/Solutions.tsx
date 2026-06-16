@@ -208,7 +208,7 @@ export default function Solutions() {
             <div className="grid md:grid-cols-2 gap-10 items-start">
               <div>
                 <p className="eyebrow !text-accent mb-4">{t.platformEyebrow}</p>
-                <h3 className="display-3 text-white">
+                <h3 className="display-3 !text-white">
                   {t.platformTitlePre}{" "}
                   <span className="text-accent">{t.platformTitleAccent}</span>
                 </h3>
