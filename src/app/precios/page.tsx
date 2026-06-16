@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -147,14 +148,14 @@ export default function Precios() {
                 ))}
               </ul>
 
-              <a
+              <Link
                 href="/#contacto"
                 className={`mt-8 justify-center ${
                   plan.cta === "primary" ? "btn-primary" : "btn-secondary"
                 }`}
               >
                 Solicitar cotización
-              </a>
+              </Link>
             </article>
           ))}
         </section>
@@ -189,9 +190,9 @@ export default function Precios() {
             medida del modelo que mejor te sirva.
           </p>
           <div className="mt-8 flex justify-center">
-            <a href="/#contacto" className="btn-primary">
+            <Link href="/#contacto" className="btn-primary">
               Hablar con REDEK
-            </a>
+            </Link>
           </div>
         </section>
       </main>

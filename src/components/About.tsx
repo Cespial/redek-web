@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { EASE_OUT_EXPO, fadeUp } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 import { useCopy } from "@/i18n/locale";
 
 const COPY = {

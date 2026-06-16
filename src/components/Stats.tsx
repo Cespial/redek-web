@@ -58,6 +58,7 @@ function StatValue({ value, play }: { value: string; play: boolean }) {
   useEffect(() => {
     // No numérico o reduced-motion: mostrar el valor final sin animar.
     if (target === null || reduceMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplay(value);
       return;
     }

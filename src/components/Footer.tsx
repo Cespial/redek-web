@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCopy } from "@/i18n/locale";
 
 type NavLink = { label: string; href: string };
@@ -112,13 +113,13 @@ export default function Footer() {
             <h4 className="eyebrow !text-accent mb-4">{t.navHeading}</h4>
             <div className="flex flex-col gap-2.5">
               {t.navLinks.map((l) => (
-                <a
+                <Link
                   key={l.href}
                   href={l.href}
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -128,13 +129,13 @@ export default function Footer() {
             <h4 className="eyebrow !text-accent mb-4">{t.legalHeading}</h4>
             <div className="flex flex-col gap-2.5">
               {t.legalLinks.map((l) => (
-                <a
+                <Link
                   key={l.label}
                   href={l.href}
                   className="text-sm text-white/60 hover:text-white transition-colors"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

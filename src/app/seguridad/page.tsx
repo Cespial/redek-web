@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -229,9 +230,9 @@ export default function Seguridad() {
                 coordinamos una sesión técnica.
               </p>
             </div>
-            <a href="/#contacto" className="btn-primary shrink-0">
+            <Link href="/#contacto" className="btn-primary shrink-0">
               Hablar con el equipo
-            </a>
+            </Link>
           </div>
         </section>
       </main>

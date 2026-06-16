@@ -7,6 +7,8 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Sincroniza el icono con la clase aplicada por el script anti-flash.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     setDark(document.documentElement.classList.contains("dark"));
   }, []);

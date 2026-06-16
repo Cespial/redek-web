@@ -25,9 +25,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
 
   useEffect(() => {
+    // Lectura client-only tras montar (evita hydration mismatch): el SSR
+    // siempre rinde el locale por defecto y aquí aplicamos la preferencia.
     try {
       const stored = localStorage.getItem("redek-lang");
       if (stored === "en" || stored === "es") {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setLocaleState(stored);
         document.documentElement.lang = stored;
       }

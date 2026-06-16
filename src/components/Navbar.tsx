@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
 import ScrollProgress from "./ScrollProgress";
@@ -67,7 +68,7 @@ export default function Navbar() {
     >
       <ScrollProgress />
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/redek-logo.png"
             alt="REDEK"
@@ -78,11 +79,11 @@ export default function Navbar() {
           <span className="font-display text-lg font-bold tracking-tight text-text">
             REDEK
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className={`group relative text-sm font-medium transition-colors ${
@@ -99,13 +100,13 @@ export default function Navbar() {
               ) : (
                 <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-brand/50 transition-transform group-hover:scale-x-100" />
               )}
-            </a>
+            </Link>
           ))}
           <LanguageToggle />
           <ThemeToggle />
-          <a href="/#contacto" className="btn-primary !px-5 !py-2 !text-sm">
+          <Link href="/#contacto" className="btn-primary !px-5 !py-2 !text-sm">
             {t.cta}
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
@@ -141,7 +142,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4 px-6 py-6">
               {navLinks.map((link, i) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
@@ -150,15 +151,15 @@ export default function Navbar() {
                   }`}
                 >
                   {t.links[i]}
-                </a>
+                </Link>
               ))}
-              <a
+              <Link
                 href="/#contacto"
                 onClick={() => setMobileOpen(false)}
                 className="btn-primary mt-2 justify-center"
               >
                 {t.cta}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

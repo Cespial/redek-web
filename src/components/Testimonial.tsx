@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { useCopy } from "@/i18n/locale";
@@ -137,17 +137,16 @@ export default function Testimonial() {
   const next = useCallback(() => goTo(index + 1, 1), [goTo, index]);
   const prev = useCallback(() => goTo(index - 1, -1), [goTo, index]);
 
-  // Autoplay (pauses on hover/focus and when reduced motion is preferred)
-  const indexRef = useRef(index);
-  indexRef.current = index;
-
+  // Autoplay (pauses on hover/focus and when reduced motion is preferred).
+  // Usa actualización funcional para no leer/mutar refs en render.
   useEffect(() => {
     if (paused || reduceMotion) return;
     const id = window.setInterval(() => {
-      goTo(indexRef.current + 1, 1);
+      setDirection(1);
+      setIndex((i) => (i + 1) % count);
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [paused, reduceMotion, goTo]);
+  }, [paused, reduceMotion, count]);
 
   const current = testimonials[index];
 

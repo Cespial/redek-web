@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -152,9 +153,9 @@ export default function Casos() {
                 ajusta a tu operación.
               </p>
             </div>
-            <a href="/#contacto" className="btn-primary shrink-0">
+            <Link href="/#contacto" className="btn-primary shrink-0">
               Hablar con REDEK
-            </a>
+            </Link>
           </div>
         </section>
       </main>
