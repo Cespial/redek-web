@@ -89,24 +89,26 @@ export default function Team() {
               <motion.div
                 key={m.name}
                 variants={fadeUp}
-                className="card group flex items-center gap-4 px-5 py-4"
+                className="card group overflow-hidden"
               >
                 {m.photo ? (
-                  <Image
-                    src={m.photo}
-                    alt={m.name}
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 shrink-0 rounded-full border border-line object-cover object-top transition-colors group-hover:border-brand"
-                  />
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-bg-soft">
+                    <Image
+                      src={m.photo}
+                      alt={m.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
                 ) : (
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-bg-soft transition-colors group-hover:border-brand">
-                    <span className="numeral text-xs font-semibold text-brand">
+                  <div className="flex aspect-[4/5] w-full items-center justify-center bg-bg-soft">
+                    <span className="numeral text-4xl font-semibold text-brand/70">
                       {m.initials}
                     </span>
                   </div>
                 )}
-                <div className="min-w-0">
+                <div className="px-5 py-4">
                   <h3 className="truncate text-sm font-semibold text-text">
                     {m.name}
                   </h3>
@@ -122,14 +124,14 @@ export default function Team() {
               variants={fadeUp}
               whileTap={{ scale: 0.97 }}
               transition={{ ease: EASE_OUT_EXPO }}
-              className="card group flex items-center gap-4 border-dashed px-5 py-4"
+              className="card group flex flex-col overflow-hidden border-dashed"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line transition-colors group-hover:border-brand">
-                <span className="text-lg leading-none text-muted transition-colors group-hover:text-brand">
+              <div className="flex aspect-[4/5] w-full items-center justify-center bg-bg-soft/40">
+                <span className="grid h-16 w-16 place-items-center rounded-full border border-line text-3xl leading-none text-muted transition-colors group-hover:border-brand group-hover:text-brand">
                   +
                 </span>
               </div>
-              <div className="min-w-0">
+              <div className="px-5 py-4">
                 <h3 className="text-sm font-semibold text-brand">
                   {t.joinTitle}
                 </h3>
