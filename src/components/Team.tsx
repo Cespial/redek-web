@@ -1,10 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { EASE_OUT_EXPO, fadeUp } from "@/lib/motion";
 import { useCopy } from "@/i18n/locale";
 
-type TeamMember = { name: string; role: string; initials: string };
+type TeamMember = {
+  name: string;
+  role: string;
+  initials: string;
+  photo?: string;
+};
 
 type TeamCopy = {
   eyebrow: string;
@@ -25,13 +31,13 @@ const COPY: { es: TeamCopy; en: TeamCopy } = {
     intro:
       "Un equipo multidisciplinario que combina derecho, tecnología y visión de negocio.",
     team: [
-      { name: "Nicolás Lozada", role: "Chief Executive Officer", initials: "NL" },
-      { name: "Shirlei Plaza", role: "Chief Administration Officer", initials: "SP" },
+      { name: "Nicolás Lozada", role: "Chief Executive Officer", initials: "NL", photo: "/team/nicolas-lozada.jpeg" },
+      { name: "Shirlei Plaza", role: "Chief Administration Officer", initials: "SP", photo: "/team/shirlei-plaza.jpeg" },
       { name: "Jordan Rojas", role: "Project & Automation Manager", initials: "JR" },
       { name: "James Daly", role: "Business Development Advisor", initials: "JD" },
       { name: "Oscar Echeverry", role: "Commercial & Processes Manager", initials: "OE" },
       { name: "Miguel Andrade", role: "Operations Manager", initials: "MA" },
-      { name: "Jacobo Gómez", role: "Head of R&D", initials: "JG" },
+      { name: "Jacobo Gómez", role: "Head of R&D", initials: "JG", photo: "/team/jacobo-gomez.jpeg" },
     ],
     joinTitle: "Únete al equipo",
     joinSubtitle: "Estamos creciendo",
@@ -44,13 +50,13 @@ const COPY: { es: TeamCopy; en: TeamCopy } = {
     intro:
       "A multidisciplinary team blending law, technology and business vision.",
     team: [
-      { name: "Nicolás Lozada", role: "Chief Executive Officer", initials: "NL" },
-      { name: "Shirlei Plaza", role: "Chief Administration Officer", initials: "SP" },
+      { name: "Nicolás Lozada", role: "Chief Executive Officer", initials: "NL", photo: "/team/nicolas-lozada.jpeg" },
+      { name: "Shirlei Plaza", role: "Chief Administration Officer", initials: "SP", photo: "/team/shirlei-plaza.jpeg" },
       { name: "Jordan Rojas", role: "Project & Automation Manager", initials: "JR" },
       { name: "James Daly", role: "Business Development Advisor", initials: "JD" },
       { name: "Oscar Echeverry", role: "Commercial & Processes Manager", initials: "OE" },
       { name: "Miguel Andrade", role: "Operations Manager", initials: "MA" },
-      { name: "Jacobo Gómez", role: "Head of R&D", initials: "JG" },
+      { name: "Jacobo Gómez", role: "Head of R&D", initials: "JG", photo: "/team/jacobo-gomez.jpeg" },
     ],
     joinTitle: "Join the team",
     joinSubtitle: "We're growing",
@@ -91,11 +97,21 @@ export default function Team() {
                 variants={fadeUp}
                 className="card group flex items-center gap-4 px-5 py-4"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-bg-soft transition-colors group-hover:border-brand">
-                  <span className="numeral text-xs font-semibold text-brand">
-                    {m.initials}
-                  </span>
-                </div>
+                {m.photo ? (
+                  <Image
+                    src={m.photo}
+                    alt={m.name}
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 rounded-full border border-line object-cover object-top transition-colors group-hover:border-brand"
+                  />
+                ) : (
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-bg-soft transition-colors group-hover:border-brand">
+                    <span className="numeral text-xs font-semibold text-brand">
+                      {m.initials}
+                    </span>
+                  </div>
+                )}
                 <div className="min-w-0">
                   <h3 className="truncate text-sm font-semibold text-text">
                     {m.name}

@@ -200,7 +200,7 @@ export default function ODRFlow() {
               {/* Connecting line — desktop horizontal */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute left-0 right-0 top-[19px] hidden md:block"
+                className="pointer-events-none absolute left-0 right-0 top-8 hidden md:block"
               >
                 <div className="mx-[16.666%] h-px bg-line">
                   <motion.div
@@ -219,7 +219,7 @@ export default function ODRFlow() {
               {/* Connecting line — mobile vertical */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute bottom-5 left-[19px] top-5 w-px md:hidden"
+                className="pointer-events-none absolute bottom-8 left-7 top-8 w-px md:hidden"
               >
                 <div className="h-full w-px bg-line">
                   <motion.div
