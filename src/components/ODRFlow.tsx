@@ -202,7 +202,7 @@ export default function ODRFlow() {
                 aria-hidden="true"
                 className="pointer-events-none absolute left-0 right-0 top-8 hidden md:block"
               >
-                <div className="mx-[16.666%] h-px bg-line">
+                <div className="ml-5 w-2/3 h-px bg-line">
                   <motion.div
                     className="h-px origin-left bg-brand"
                     initial={false}
